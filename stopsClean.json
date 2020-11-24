@@ -1,0 +1,42 @@
+[
+    {"id": "place-clmnl", "lat": 42.336142, "lon": -71.149326, "name": "Cleveland Circle"
+    },
+    {"id": "place-engav", "lat": 42.336971, "lon": -71.14566, "name": "Englewood Avenue"
+    },
+    {"id": "place-denrd", "lat": 42.337807, "lon": -71.141853, "name": "Dean Road"
+    },
+    {"id": "place-tapst", "lat": 42.338459, "lon": -71.138702, "name": "Tappan Street"
+    },
+    {"id": "place-bcnwa", "lat": 42.339394, "lon": -71.13533, "name": "Washington Square"
+    },
+    {"id": "place-fbkst", "lat": 42.339725, "lon": -71.131073, "name": "Fairbanks Street"
+    },
+    {"id": "place-bndhl", "lat": 42.340023, "lon": -71.129082, "name": "Brandon Hall"
+    },
+    {"id": "place-sumav", "lat": 42.34111, "lon": -71.12561, "name": "Summit Avenue"
+    },
+    {"id": "place-cool", "lat": 42.342116, "lon": -71.121263, "name": "Coolidge Corner"
+    },
+    {"id": "place-stpul", "lat": 42.343327, "lon": -71.116997, "name": "Saint Paul Street"
+    },
+    {"id": "place-kntst", "lat": 42.344074, "lon": -71.114197, "name": "Kent Street"
+    },
+    {"id": "place-hwsst", "lat": 42.344906, "lon": -71.111145, "name": "Hawes Street"
+    },
+    {"id": "place-smary", "lat": 42.345974, "lon": -71.107353, "name": "Saint Mary's Street"
+    },
+    {"id": "place-kencl", "lat": 42.348949, "lon": -71.095169, "name": "Kenmore"
+    },
+    {"id": "place-hymnl", "lat": 42.347888, "lon": -71.087903, "name": "Hynes Convention Center"
+    },
+    {"id": "place-coecl", "lat": 42.349974, "lon": -71.077447, "name": "Copley"
+    },
+    {"id": "place-armnl", "lat": 42.351902, "lon": -71.070893, "name": "Arlington"
+    },
+    {"id": "place-boyls", "lat": 42.35302, "lon": -71.06459, "name": "Boylston"
+    },
+    {"id": "place-pktrm", "lat": 42.356395, "lon": -71.062424, "name": "Park Street"
+    },
+    {"id": "place-gover", "lat": 42.359705, "lon": -71.059215, "name": "Government Center"
+    }
+]
