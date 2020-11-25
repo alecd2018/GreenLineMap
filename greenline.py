@@ -5,7 +5,7 @@ import time
 import json
 import math
 
-NUM_PIXELS = 5
+NUM_PIXELS = 10
 API_KEY = '48a3fb6b1cd34f7b859d0e0d220c15d1'
 
 def getRequest(url):
@@ -22,15 +22,15 @@ def lookup(id, inList):
 def getDistance(x1, y1, x2, y2):
     return math.sqrt((float(x2) - float(x1))**2 + (float(y2) - float(y1))**2)
 
-def getClosestStops(x, y, stopData, noStop="none"):
+def getClosestStops(x, y, stops, noStop="none", secNoStop="none"):
     minDist = 100
     minStop = ""
-    for stop in stopData:
-        d = getDistance(x, y, stop["lat"], stop["lon"])
-        if d < minDist and stop["id"]!=noStop:
-            minStop = stop['id']
+    for stop in stops:
+        d = getDistance(x, y, stops[stop]["lat"], stops[stop]["lon"])
+        if d < minDist and stop!=noStop and stop!=secNoStop:
+            minStop = stop
             minDist = d
-    return lookup(minStop, stopData)
+    return stops[minStop]
 
 # Get slope line between two points
 def getSlope(x1, y1, x2, y2):
@@ -48,26 +48,39 @@ def transpose(x1, y1, x2, y2):
     transposedYCoord = (line[0] * transposedXCoord) + line[1]
     return (transposedXCoord, transposedYCoord)
 
-def getNextStop(stopID, stops):
-    flag = False
-    for stop in stops:
-        if stopID == stop['id']:
-            flag = True
-            continue
-        if flag == True:
-            return stop
+def getNextStop(train, stopA, stops):
+    stopBID = stopA['prevStop']
+    stopCID = stopA['nextStop']
+
+    if stopCID == "":
+        return ""
+
+    if stopBID == "":
+        return stops[stopA['nextStop']]
+    else:
+        stopB = stops[stopBID]
+
+        distAB = getDistance(stopA['lat'], stopA['lon'], stopA['lat'], stopB['lon'])
+        distBTrain = getDistance(train['lat'], train['lon'], stopB['lat'], stopB['lon'])
+
+        if distAB < distBTrain:
+            return stops[stopA['nextStop']]
+        else:
+            return stopA
 
 # Convert line location to pixel light up
-def getPixel(point, closest, secondClosest):
+def getPixel(point, closest, nextStop):
 
-    distStops = getDistance(closest['lat'], closest['lon'], secondClosest['lat'], secondClosest['lon'])
+    # TODO: fix next stop estimator
+
+    distStops = getDistance(closest['lat'], closest['lon'], nextStop['lat'], nextStop['lon'])
     distPerPixel = distStops / NUM_PIXELS
 
     distToClosestStop = getDistance(point[0], point[1], closest['lat'], closest['lon'])
-    dist2 = getDistance(point[0], point[1], secondClosest['lat'], secondClosest['lon'])
+    dist2 = getDistance(point[0], point[1], nextStop['lat'], nextStop['lon'])
 
- 
     bucket = distToClosestStop / distPerPixel
+    print(bucket)
     bucketCount = 0
     for b in range(NUM_PIXELS):
         if bucket > -0.5 and bucket < 0.5:
@@ -78,34 +91,38 @@ def getPixel(point, closest, secondClosest):
 
     return
 
-def getStopPixelData(stops):
-    stopPixels = {}
-    pixelCount = 0
-    for stop in stops:
-        stopPixels[stop['id']] = pixelCount
-        pixelCount += NUM_PIXELS
-    return stopPixels
-        
 def getPixelList(stops):
     stopPixels = [None] * (len(stops) * NUM_PIXELS)
-    for i in range(0, len(stops)*NUM_PIXELS, NUM_PIXELS):
-        stopPixels[i] = stops[int(i/5)]["id"]
+    i = 0
+    for stop in stops:
+        stopPixels[i] = stop
         for j in range(NUM_PIXELS-1):
             stopPixels[i+j + 1] = ''
+        i += NUM_PIXELS
     return stopPixels
 
 def getStopsData():
     data = {}
     with open("stops.json") as respFile:
         data = json.load(respFile)
-    stops = []
+
+    stops = {}
+    pixelCount = 0
+    prevStop = ""
     for stop in data["data"]:
         newStop = {}
-        newStop["id"] = stop["id"]
+        newStop['id'] = stop['id']
         newStop["lat"] = stop["attributes"]["latitude"]
         newStop["lon"] = stop["attributes"]["longitude"]
         newStop["name"] = stop['attributes']["name"]
-        stops.append(newStop)
+        newStop['pixelNumber'] = pixelCount
+        pixelCount += NUM_PIXELS
+        newStop['prevStop'] = prevStop
+        newStop['nextStop'] = ''
+        if prevStop != '':
+            stops[prevStop]['nextStop'] = stop['id']
+        prevStop = stop['id']
+        stops[stop['id']] = newStop
     return stops
 
 def getTrainData():
@@ -153,17 +170,15 @@ def listPredictTimes(trainList):
 
 
 def run():
-    # while True:
-    #     url = "https://api-v3.mbta.com/predictions?page%5Boffset%5D=0&page%5Blimit%5D=3&filter%5Bdirection_id%5D=1&filter%5Bstop%5D=place-stpul"
-    #     data = getPredictionData(url)['data']
-    #     listPredictTimes(data)
-    #     time.sleep(10)
 
     stops = getStopsData()
-    pixelDict = getStopPixelData(stops)
+    print(stops)
 
     # TODO: initialize distance between stops to be standard pixel distance
     while True:
+        # url = "https://api-v3.mbta.com/predictions?page%5Boffset%5D=0&page%5Blimit%5D=3&filter%5Bdirection_id%5D=1&filter%5Bstop%5D=place-stpul"
+        # data = getRequest(url)['data']
+        # listPredictTimes(data)
 
         pixelList = getPixelList(stops)
 
@@ -171,23 +186,22 @@ def run():
 
         for train in trains:
             closest = getClosestStops(train["lat"], train["lon"], stops)
-            secondClosest = getClosestStops(train["lat"], train["lon"], stops, closest['id'])
+            print(closest)
 
             bestPoint = (train['lat'], train['lon'])
-            # bestPoint = transpose(closest["lat"], closest['lon'], secondClosest['lat'], secondClosest['lon'])
-            pixel = getPixel(bestPoint, closest, secondClosest)
+            nextStop = getNextStop(train, closest, stops)
 
-            nextStop = getNextStop(closest['id'], stops)
-            print(closest['id'])
-            print(nextStop)
-            print(secondClosest)
-            print("")
-            if nextStop == secondClosest:
-                pixel += pixelDict[closest['id']]
-            else:
-                pixel = pixelDict[closest['id']] - pixel
+            if nextStop != "":
+                # bestPoint = transpose(closest["lat"], closest['lon'], secondClosest['lat'], secondClosest['lon'])
 
-            pixelList[pixel] += "X"
+                if nextStop != closest:
+                    pixel = getPixel(bestPoint, closest, nextStop)
+                    pixel += stops[closest['id']]['pixelNumber']
+                else:
+                    pixel = getPixel(bestPoint, closest, stops[closest['prevStop']])
+                    pixel = stops[closest['id']]['pixelNumber'] - pixel
+
+                pixelList[pixel] += "X"
 
         print(pixelList)
         print('')
