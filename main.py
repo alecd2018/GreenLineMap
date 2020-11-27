@@ -15,7 +15,7 @@ def stop():
 
 
 def run():
-    setupServer(start, stop)
+    # setupServer(start, stop)
     start()
 
 
