@@ -10,21 +10,19 @@ class Controller(object):
     def __init__(self):
         self.state = 0
         self.map = map.Map()
-        self.pause = False
+        self.isPaused = False
 
     def tick(self):
-        while not self.pause:
+        while not self.isPaused:
             self.map.tick()
             textMap = self.map.textMap()
             print(textMap)
             time.sleep(1)
             
     def pause(self):
-        self.pause = True
+        print("Pausing")
+        self.isPaused = True
 
     def restart(self):
-        self.pause = False
-        self.tick()
-
-# c = Controller()
-# c.tick()
+        self.isPaused = False
+        # self.tick()

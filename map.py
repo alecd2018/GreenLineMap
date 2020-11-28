@@ -1,5 +1,6 @@
 import mbtaAPI
 import util
+import datetime
 
 from var import *
 
@@ -93,11 +94,13 @@ class Stops(object):
 
             
 class Train(object):
-    def __init__(self, location, direction):
+    def __init__(self, location, direction, timestamp, lastLoc):
         self.location = location
         self.direction = direction
         self.prev = ""
         self.next = ""
+        self.timestamp = timestamp
+        self.lastLocation = lastLoc
 
     def __str__(self):
         return "{"+str(self.location)+', '+str(self.direction)+', '+str(self.prev)+', '+str(self.next)+'}'
@@ -133,13 +136,21 @@ class Trains(object):
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])
         
+        oldLoc = 0
+        oldTime = 0
         for train in resp:
+
+            if train['id'] in self.trains:
+                oldLoc = self.trains[train['id']].location
+                oldTime = self.trains[train['id']].timestamp
+
             lat = train['attributes']['latitude']
             lon = train['attributes']['longitude']
             loc = (lat, lon)
+            timestamp = datetime.datetime.now()
             status = train['attributes']['current_status']
 
-            t = Train(loc, train['attributes']['direction_id'])
+            t = Train(loc, train['attributes']['direction_id'], timestamp, oldLoc)
             self.trains[train['id']] = t
 
         for train in self.trains:
@@ -159,6 +170,10 @@ class Trains(object):
             t.prev = closest[0]
             t.next = closest[1]
 
+        self.pointUpdate()
+
+    def pointUpdate(self):
+
         for train in self.trains:
             prevStop = self.trains[train].prev.location
             nextStop = self.trains[train].next.location
@@ -173,6 +188,30 @@ class Trains(object):
 
             if pixel >= TOTAL_NUM_PIXELS:
                 pixel = TOTAL_NUM_PIXELS - 1
+
+            self.pixelList[pixel].append(self.trains[train])
+
+    def interpolateUpdate(self, lastLoc, lastTime, stops):
+        
+        for train in self.trains:
+            prevStop = self.trains[train].prev.location
+            nextStop = self.trains[train].next.location
+            distPrev = util.distTwoPoints(self.trains[train].location, prevStop)
+            # distNext = util.distTwoPoints(self.trains[train].location, self.trains[train].next)
+            distSegment = util.distTwoPoints(nextStop, prevStop)
+
+            prevPixel = self.trains[train].prev.pixelLocation
+            nextPixel = self.trains[train].next.pixelLocation
+            segmentPixels = nextPixel - prevPixel
+            pixel = round(segmentPixels * distPrev / distSegment) + prevPixel
+
+            if pixel >= TOTAL_NUM_PIXELS:
+                pixel = TOTAL_NUM_PIXELS - 1
+
+            if not stops.get(pixel):
+                dDist = self.trains[train].location - self.trains[train].lastLoc
+                dt = self.trains[train].timestamp - lastTime
+                
 
             self.pixelList[pixel].append(self.trains[train])
 
