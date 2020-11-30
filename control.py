@@ -13,10 +13,11 @@ class Controller(object):
         self.isPaused = False
 
     def tick(self):
-        while not self.isPaused:
-            self.map.tick()
-            textMap = self.map.textMap()
-            print(textMap)
+        while True:
+            if not self.isPaused:
+                self.map.tick()
+                textMap = self.map.textMap()
+                print(textMap)
             time.sleep(1)
             
     def pause(self):

@@ -13,7 +13,6 @@ def start():
 
 def restart():
     controller.restart()
-    controller.tick()
 
 
 def stop():
