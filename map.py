@@ -5,37 +5,39 @@ import datetime
 from var import *
 
 class Map(object):
+
     def __init__(self):
         self.stops = Stops()
         self.trains = {}
+        self.name = "Green - C"
 
     def tick(self):
         self.trains = Trains()
 
         self.trains.update(self.stops.stops)
 
-    def textMap(self):
-
-        def marker(i):
-            if self.trains.get(i) and len(self.trains.get(i)):
-                flags = [False, False]
-                for t in self.trains.get(i):
-                    flags[t.direction] = True
-                if flags[0] and flags[1]:
-                    return 'X' if self.stops.get(i) else 'x'
-                elif flags[0]:
-                    return '(' if self.stops.get(i) else '<'
-                else:
-                    return ')' if self.stops.get(i) else '>'
-            if self.stops.get(i):
-                return 'o'
+    def marker(self, i):
+        if self.trains.get(i) and len(self.trains.get(i)):
+            flags = [False, False]
+            for t in self.trains.get(i):
+                flags[t.direction] = True
+            if flags[0] and flags[1]:
+                return 'X' if self.stops.get(i) else 'x'
+            elif flags[0]:
+                return '(' if self.stops.get(i) else '<'
             else:
-                return '-'
+                return ')' if self.stops.get(i) else '>'
+        if self.stops.get(i):
+            return 'o'
+        else:
+            return '-'
 
-        return "GreenLine - C" + ' ' + ''.join(map(marker, range(TOTAL_NUM_PIXELS)))
+    def textMap(self):
+        return "GreenLine - C" + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
 
 
 class Stop(object):
+
     def __init__(self, id, name, location):
         self.name = name
         self.location = location
@@ -47,6 +49,7 @@ class Stop(object):
         
 
 class Stops(object):
+
     def __init__(self):
         self.stops = {}
         self.pixelList = []
@@ -94,19 +97,20 @@ class Stops(object):
 
             
 class Train(object):
-    def __init__(self, location, direction, timestamp, lastLoc):
+
+    def __init__(self, location, direction, timestamp):
         self.location = location
         self.direction = direction
         self.prev = ""
         self.next = ""
         self.timestamp = timestamp
-        self.lastLocation = lastLoc
 
     def __str__(self):
         return "{"+str(self.location)+', '+str(self.direction)+', '+str(self.prev)+', '+str(self.next)+'}'
 
 
 class Trains(object):
+
     def __init__(self):
         self.trains = {}
         self.pixelList = []
@@ -121,6 +125,9 @@ class Trains(object):
         for p in self.pixelList:
             res += str(p)
         return res
+        
+    def get(self, i):
+        return self.pixelList[i]
 
     def getPrediction(self, id):
         resp = mbtaAPI.getPrediction(id)
@@ -129,6 +136,23 @@ class Trains(object):
             l.append(train['attributes']['arrival_time'])
         print(l)
         return l
+
+    def getTrainPixel(self, train):
+        prevStop = train.prev.location
+        nextStop = train.next.location
+        distPrev = util.distTwoPoints(train.location, prevStop)
+        # distNext = util.distTwoPoints(self.trains[train].location, self.trains[train].next)
+        distSegment = util.distTwoPoints(nextStop, prevStop)
+
+        prevPixel = train.prev.pixelLocation
+        nextPixel = train.next.pixelLocation
+        segmentPixels = nextPixel - prevPixel
+        pixel = round(segmentPixels * distPrev / distSegment) + prevPixel
+
+        if pixel >= TOTAL_NUM_PIXELS:
+            pixel = TOTAL_NUM_PIXELS - 1
+
+        return pixel
     
     def update(self, stops):
         resp = mbtaAPI.getTrains()['data']
@@ -150,7 +174,7 @@ class Trains(object):
             timestamp = datetime.datetime.now()
             status = train['attributes']['current_status']
 
-            t = Train(loc, train['attributes']['direction_id'], timestamp, oldLoc)
+            t = Train(loc, train['attributes']['direction_id'], timestamp)
             self.trains[train['id']] = t
 
         for train in self.trains:
@@ -175,46 +199,11 @@ class Trains(object):
     def pointUpdate(self):
 
         for train in self.trains:
-            prevStop = self.trains[train].prev.location
-            nextStop = self.trains[train].next.location
-            distPrev = util.distTwoPoints(self.trains[train].location, prevStop)
-            # distNext = util.distTwoPoints(self.trains[train].location, self.trains[train].next)
-            distSegment = util.distTwoPoints(nextStop, prevStop)
-
-            prevPixel = self.trains[train].prev.pixelLocation
-            nextPixel = self.trains[train].next.pixelLocation
-            segmentPixels = nextPixel - prevPixel
-            pixel = round(segmentPixels * distPrev / distSegment) + prevPixel
-
-            if pixel >= TOTAL_NUM_PIXELS:
-                pixel = TOTAL_NUM_PIXELS - 1
+            
+            pixel = self.getTrainPixel(self.trains[train])
 
             self.pixelList[pixel].append(self.trains[train])
 
     def interpolateUpdate(self, lastLoc, lastTime, stops):
-        
-        for train in self.trains:
-            prevStop = self.trains[train].prev.location
-            nextStop = self.trains[train].next.location
-            distPrev = util.distTwoPoints(self.trains[train].location, prevStop)
-            # distNext = util.distTwoPoints(self.trains[train].location, self.trains[train].next)
-            distSegment = util.distTwoPoints(nextStop, prevStop)
-
-            prevPixel = self.trains[train].prev.pixelLocation
-            nextPixel = self.trains[train].next.pixelLocation
-            segmentPixels = nextPixel - prevPixel
-            pixel = round(segmentPixels * distPrev / distSegment) + prevPixel
-
-            if pixel >= TOTAL_NUM_PIXELS:
-                pixel = TOTAL_NUM_PIXELS - 1
-
-            if not stops.get(pixel):
-                dDist = self.trains[train].location - self.trains[train].lastLoc
-                dt = self.trains[train].timestamp - lastTime
-                
-
-            self.pixelList[pixel].append(self.trains[train])
-
-
-    def get(self, i):
-        return self.pixelList[i]
+        # TODO
+        return

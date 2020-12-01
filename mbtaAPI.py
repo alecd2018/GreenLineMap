@@ -3,6 +3,7 @@ import requests
 import json
 from var import *
 
+
 def getRequest(method, parameters=None):
     parameters = parameters or {}
     parameters['api_key'] = API_KEY
@@ -12,6 +13,7 @@ def getRequest(method, parameters=None):
         params=parameters
     ).text)
     return data
+
 
 def getTrains():
     data = getRequest("vehicles", {"filter[route]": ROUTE})

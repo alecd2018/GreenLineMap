@@ -10,7 +10,7 @@ ROUTE = "Green-C"
 
 API_FILTER = "filter%5Broute%5D=Green-C&filter%5Bdirection_id%5D=1"
 
-TOTAL_NUM_PIXELS = 120
+TOTAL_NUM_PIXELS = 150
 
 STOP_LIST = [
     'place-clmnl',
@@ -36,6 +36,3 @@ STOP_LIST = [
     'place-haecl',
     'place-north'
 ]
-
-
-# TODO: add pixel distances

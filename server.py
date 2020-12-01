@@ -1,8 +1,8 @@
 # server.py launches a Python based server for starting and stopping the led pr
-from threading import Thread
 
 from var import *
 from flask import Flask, make_response
+from threading import Thread
 app = Flask(__name__)
 
 

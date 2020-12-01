@@ -5,7 +5,6 @@ from server import *
 
 controller = Controller()
 
-# TODO: maybe make controller separate thread
 
 def start():
     controller.tick()

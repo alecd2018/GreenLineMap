@@ -26,4 +26,3 @@ class Controller(object):
 
     def restart(self):
         self.isPaused = False
-        # self.tick()
