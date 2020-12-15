@@ -19,8 +19,6 @@ def stop():
 
 
 def togglePower(p):
-    print("STATE: "+p)
-    print(controller.isPaused)
     if p == "off":
         stop()
         return "Pausing LED Program"

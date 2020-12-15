@@ -11,15 +11,15 @@ class Controller(object):
     def __init__(self):
         self.state = 0
         self.map = map.Map()
-        self.leds = ledControl.ledControl()
+        self.leds = ledControl.LEDControl()
         self.isPaused = False
 
     def tick(self):
         while True:
             if not self.isPaused:
 
-                self.map.tick()
-                self.leds.tick()
+                trains, stops = self.map.tick()
+                self.leds.tick(trains, stops)
 
                 textMap = self.map.textMap()
                 print(textMap)
@@ -33,4 +33,3 @@ class Controller(object):
 
     def restart(self):
         self.isPaused = False
-        self.leds.resume()

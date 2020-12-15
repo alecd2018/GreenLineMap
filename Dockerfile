@@ -1,7 +1,10 @@
 FROM ubuntu
 
-# install python
-# install Flask
+# install conda w python 3.7
+
+# install Flask via conda
+
+# install requests via pip
 
 # install ws281x library
 
