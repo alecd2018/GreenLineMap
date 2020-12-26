@@ -16,6 +16,8 @@ class Map(object):
 
         self.trains.update(self.stops.stops)
 
+        return (self.trains, self.stops)
+
     def marker(self, i):
         if self.trains.get(i) and len(self.trains.get(i)):
             flags = [False, False]
