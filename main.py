@@ -1,10 +1,10 @@
 # main.py contains the controls necessary to start and stop the led program
 from control import Controller
 from server import *
+from gpiozero import Button
 
 
 controller = Controller()
-
 
 def start():
     controller.tick()
@@ -29,8 +29,28 @@ def togglePower(p):
         return "Already on"
 
 
+def setMode(m):
+    if m == "party":   
+        controller.party()
+        return "Partying"
+    else:
+        controller.trains()
+        return "Tracking trains"
+
+
+def toggleButton():
+    if controller.isPaused:
+        restart()
+    else:
+        stop()
+
+
 def run():
-    setupServer(togglePower)
+
+    button = Button(21)
+    button.when_pressed = toggleButton
+
+    setupServer(togglePower, setMode)
     start()
 
 

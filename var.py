@@ -4,13 +4,13 @@ API_KEY = '48a3fb6b1cd34f7b859d0e0d220c15d1'
 
 MBTA_BASE_URL = "https://api-v3.mbta.com/"
 
-SERVER_IP = "localhost"
+SERVER_IP = "0.0.0.0"
 
 ROUTE = "Green-C"
 
 API_FILTER = "filter%5Broute%5D=Green-C&filter%5Bdirection_id%5D=1"
 
-TOTAL_NUM_PIXELS = 150
+TOTAL_NUM_PIXELS = 35
 
 STOP_LIST = [
     'place-clmnl',
@@ -35,4 +35,16 @@ STOP_LIST = [
     'place-gover',
     'place-haecl',
     'place-north'
+]
+
+ABBR_STOP_LIST = [
+    'place-tapst',
+    'place-bcnwa',
+    'place-fbkst',
+    'place-bndhl',
+    'place-sumav',
+    'place-cool',
+    'place-stpul',
+    'place-kntst',
+    'place-hwsst'
 ]

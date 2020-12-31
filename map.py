@@ -14,7 +14,7 @@ class Map(object):
     def tick(self):
         self.trains = Trains()
 
-        self.trains.update(self.stops.stops)
+        self.trains.update(self.stops.stops, self.stops.allStops)
 
         return (self.trains, self.stops)
 
@@ -54,12 +54,23 @@ class Stops(object):
 
     def __init__(self):
         self.stops = {}
+        self.allStops = {}
         self.pixelList = []
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])
 
         resp = mbtaAPI.getStops()['data']
+
+        # init allStops
         for stop in resp:
+            lat = stop['attributes']['latitude']
+            lon = stop['attributes']['longitude']
+            loc = (lat, lon)
+            stopObj = Stop(stop['id'], stop["attributes"]['name'], loc)
+            self.allStops[stop['id']] = stopObj
+
+        # init stops
+        for stop in self.filterAbbrStops(resp):
             lat = stop['attributes']['latitude']
             lon = stop['attributes']['longitude']
             loc = (lat, lon)
@@ -67,14 +78,14 @@ class Stops(object):
             self.stops[stop['id']] = stopObj
 
         totalDist = 0
-        for i in range(len(STOP_LIST)-1):
-            stopA = self.stops[STOP_LIST[i]]
-            stopB = self.stops[STOP_LIST[i+1]]
+        for i in range(len(ABBR_STOP_LIST)-1):
+            stopA = self.stops[ABBR_STOP_LIST[i]]
+            stopB = self.stops[ABBR_STOP_LIST[i+1]]
             totalDist += util.distTwoPoints(stopA.location, stopB.location)
 
-        for i in range(len(STOP_LIST)-1):
-            stopA = self.stops[STOP_LIST[i]]
-            stopB = self.stops[STOP_LIST[i+1]]
+        for i in range(len(ABBR_STOP_LIST)-1):
+            stopA = self.stops[ABBR_STOP_LIST[i]]
+            stopB = self.stops[ABBR_STOP_LIST[i+1]]
             dist = util.distTwoPoints(stopA.location, stopB.location)
 
             if i == 0:
@@ -93,6 +104,13 @@ class Stops(object):
         for stop in self.stops:
             res += str(self.stops[stop])+'\n'
         return res
+
+    def filterAbbrStops(self, resp):
+        abbrList = []
+        for stop in resp:
+            if stop['id'] in ABBR_STOP_LIST:
+                abbrList.append(stop)
+        return abbrList
 
     def get(self, i):
         return self.pixelList[i]
@@ -155,8 +173,22 @@ class Trains(object):
             pixel = TOTAL_NUM_PIXELS - 1
 
         return pixel
+
+    def filterAbbrTrains(self, stops):
+        abbrTrains = {}
+        for train in self.trains:
+            t = self.trains[train]
+            if t.next.id in ABBR_STOP_LIST[1:]:
+                t.next = stops[t.next.id]
+                t.prev = stops[t.prev.id]
+                abbrTrains[train] = t
+            elif t.prev.id in ABBR_STOP_LIST[:-1]:
+                t.next = stops[t.next.id]
+                t.prev = stops[t.prev.id]
+                abbrTrains[train] = t
+        return abbrTrains
     
-    def update(self, stops):
+    def update(self, stops, allStops):
         resp = mbtaAPI.getTrains()['data']
         self.pixelList = []
         for i in range(TOTAL_NUM_PIXELS):
@@ -184,8 +216,8 @@ class Trains(object):
             minDist = 10000
             for i in range(len(STOP_LIST)-1):
                 t = self.trains[train]
-                stopA = stops[STOP_LIST[i]]
-                stopB = stops[STOP_LIST[i+1]]
+                stopA = allStops[STOP_LIST[i]]
+                stopB = allStops[STOP_LIST[i+1]]
                 distToSegment = util.distPointLine(t.location, stopA.location, stopB.location)
 
                 if distToSegment < minDist:
@@ -195,6 +227,8 @@ class Trains(object):
 
             t.prev = closest[0]
             t.next = closest[1]
+
+        self.trains = self.filterAbbrTrains(stops)
 
         self.pointUpdate()
 
