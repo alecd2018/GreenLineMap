@@ -3,6 +3,7 @@ from control import Controller
 from server import *
 from gpiozero import Button
 import argparse
+import logging
 
 
 controller = Controller()
@@ -46,14 +47,21 @@ def toggleButton():
 
 
 def run():
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+    logging.basicConfig(filename='debug.log', filemode='w', level=logging.INFO)
 
     button = Button(21)
     button.when_pressed = toggleButton
 
     setupServer(togglePower, setMode)
     
-    controller.tick()
-
+    try:
+        controller.tick()
+    
+    except KeyboardInterrupt:
+        controller.pause()
+        logging.warning("Received keyboard interrupt, shutting down")
 
 if __name__ == "__main__":
     run()

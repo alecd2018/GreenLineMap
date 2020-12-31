@@ -4,6 +4,7 @@ import util
 import map
 import time
 import ledControl
+import logging
 
 
 class Controller(object):
@@ -17,8 +18,8 @@ class Controller(object):
 
     def tick(self):
 
-        try:
-            while True:
+        while True:
+            try: 
                 while not self.partying:
                     if not self.isPaused:
 
@@ -26,6 +27,7 @@ class Controller(object):
                         self.leds.tick(trains, stops)
 
                         textMap = self.map.textMap()
+                        logging.debug(textMap)
 
                     time.sleep(1)
 
@@ -35,27 +37,29 @@ class Controller(object):
                     else:
                         time.sleep(0.2)
 
-        except KeyboardInterrupt:
-            self.leds.pause()
+            except ConnectionError:
+                # wait 5 seconds, then try again
+                logging.error("Connection error, retrying in 5 seconds...")
+                time.sleep(5)
             
     def pause(self):
-        print("Pausing")
+        logging.info("Pausing")
         self.isPaused = True
         self.leds.pause()
 
     def restart(self):
-        print("Restarting")
+        logging.info("Restarting")
         self.isPaused = False
         self.partying = False
         self.leds.interrupt = False
 
     def party(self):
-        print("Partying")
+        logging.info("Partying")
         self.partying = True
         self.leds.interrupt = False
 
     def trains(self):
-        print("Running trains")
+        logging.info("Running trains")
         self.leds.pause()
         self.partying = False
         self.leds.interrupt = True

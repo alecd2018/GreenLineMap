@@ -2,11 +2,11 @@
 from rpi_ws281x import *
 from var import *
 import time
+import logging
 
 
 # LED strip configuration:
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
-#LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 50     # Set to 0 for darkest and 255 for brightest
@@ -22,18 +22,16 @@ PURPLE = Color(40, 0, 40)
 YELLOW = Color(50, 50, 0)
 OFF = Color(0, 0, 0)
 
-# WHITE = (255, 255, 255)
-# GREEN = (0, 200, 110)
-# BLUE = (0, 100, 255)
-# YELLOW = (0, 0, 0)
-# OFF = (0, 0, 0)
 
 class LEDControl(object):
 
     def __init__(self):
-        self.strip = Adafruit_NeoPixel(TOTAL_NUM_PIXELS, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+        logging.info("Initializing LED strip")
 
+        self.strip = Adafruit_NeoPixel(TOTAL_NUM_PIXELS, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
         self.strip.begin()
+
+        logging.info("LED strip initialized successfully")
 
         self.trains = []
         self.stops = []
@@ -101,7 +99,8 @@ class LEDControl(object):
             return OFF
 
     def party(self):
-        # rainbow(strip)
+        logging.debug("Running party cycle")
+
         self.colorWipe(Color(255, 0, 0))  # Red wipe
         self.colorWipe(Color(0, 255, 0))  # Blue wipe
         self.colorWipe(Color(0, 0, 255))  # Green wipe
@@ -121,4 +120,4 @@ class LEDControl(object):
         for i in range(TOTAL_NUM_PIXELS):
             self.strip.setPixelColor(i, OFF)
             self.strip.show()
-        print("OFF")
+        logging.info("Lights out")

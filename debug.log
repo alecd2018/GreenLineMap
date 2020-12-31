@@ -1,0 +1,4 @@
+INFO:root:Starting server at 0.0.0.0
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:Pausing
+INFO:root:Lights out

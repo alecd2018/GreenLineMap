@@ -3,27 +3,26 @@
 from var import *
 from flask import Flask, make_response
 from threading import Thread
+import logging
 app = Flask(__name__)
 
 
 def run():
-    print("Starting server at " + SERVER_IP)
+    logging.info("Starting server at " + SERVER_IP)
     app.run(host=SERVER_IP, port=80)
 
 
 toggle_cb = None
-# brightness_cb = None
 
 
 def setupServer(t,s):
     global toggle_cb
     global set_mode
-    # global brightness_cb
+    global thread 
+
     toggle_cb = t
     set_mode = s
 
-    # brightness_cb = b
-    # _thread.start_new_thread(run, ())
     thread = Thread(target = run)
     thread.start()
 
