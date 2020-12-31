@@ -38,6 +38,8 @@ class LEDControl(object):
         self.trains = []
         self.stops = []
 
+        self.interrupt = False
+
 
     def wheel(self, pos):
         """Generate rainbow colors across 0-255 positions."""
@@ -54,6 +56,8 @@ class LEDControl(object):
     def colorWipe(self, color, wait_ms=50):
         """Wipe color across display a pixel at a time."""
         for i in range(self.strip.numPixels()):
+            if self.interrupt:
+                break
             self.strip.setPixelColor(i, color)
             self.strip.show()
             time.sleep(wait_ms/1000.0)
@@ -66,20 +70,15 @@ class LEDControl(object):
             self.strip.show()
             time.sleep(wait_ms/1000.0)
 
-    def rainbowCycle(self, wait_ms=20, iterations=10):
+    def rainbowCycle(self, wait_ms=20, iterations=3):
         """Draw rainbow that uniformly distributes itself across all pixels."""
         for j in range(256*iterations):
+            if self.interrupt:
+                break
             for i in range(self.strip.numPixels()):
                 self.strip.setPixelColor(i, self.wheel((int(i * 256 / self.strip.numPixels()) + j) & 255))
             self.strip.show()
             time.sleep(wait_ms/1000.0)
-
-    def party(self):
-        # rainbow(strip)
-        self.colorWipe(Color(255, 0, 0))  # Red wipe
-        self.colorWipe(Color(0, 255, 0))  # Blue wipe
-        self.colorWipe(Color(0, 0, 255))  # Green wipe
-        self.rainbowCycle()
 
     def marker(self, i):
         if self.trains.get(i) and len(self.trains.get(i)):
@@ -91,7 +90,7 @@ class LEDControl(object):
             if flags[0] and flags[1]:
                 return RED if self.stops.get(i) else BLUE
             # Train at stop = YELLOW
-            # Moving train = PURPLE
+            # Moving train = GREEN
             elif flags[0]:
                 return YELLOW if self.stops.get(i) else GREEN
             else:
@@ -100,6 +99,13 @@ class LEDControl(object):
             return WHITE
         else:
             return OFF
+
+    def party(self):
+        # rainbow(strip)
+        self.colorWipe(Color(255, 0, 0))  # Red wipe
+        self.colorWipe(Color(0, 255, 0))  # Blue wipe
+        self.colorWipe(Color(0, 0, 255))  # Green wipe
+        self.rainbowCycle()
 
     def tick(self, trains, stops):
         self.trains = trains
@@ -111,6 +117,7 @@ class LEDControl(object):
 
     def pause(self):
         # Turn off all LEDs
+        self.interrupt = True
         for i in range(TOTAL_NUM_PIXELS):
             self.strip.setPixelColor(i, OFF)
             self.strip.show()

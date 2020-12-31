@@ -2,12 +2,10 @@
 from control import Controller
 from server import *
 from gpiozero import Button
+import argparse
 
 
 controller = Controller()
-
-def start():
-    controller.tick()
 
 
 def restart():
@@ -41,8 +39,10 @@ def setMode(m):
 def toggleButton():
     if controller.isPaused:
         restart()
-    else:
+    elif controller.partying:
         stop()
+    else:
+        controller.party()
 
 
 def run():
@@ -51,7 +51,8 @@ def run():
     button.when_pressed = toggleButton
 
     setupServer(togglePower, setMode)
-    start()
+    
+    controller.tick()
 
 
 if __name__ == "__main__":

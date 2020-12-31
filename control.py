@@ -16,24 +16,27 @@ class Controller(object):
         self.partying = False
 
     def tick(self):
-        while not self.partying:
-            if not self.isPaused:
 
-                trains, stops = self.map.tick()
-                self.leds.tick(trains, stops)
+        try:
+            while True:
+                while not self.partying:
+                    if not self.isPaused:
 
-                textMap = self.map.textMap()
+                        trains, stops = self.map.tick()
+                        self.leds.tick(trains, stops)
 
-                # For Debugging:
-                # print(textMap)
+                        textMap = self.map.textMap()
 
-            time.sleep(1)
+                    time.sleep(1)
 
-        while self.partying:
-            if not self.isPaused:
-                self.leds.party()
-            else:
-                time.sleep(1)
+                while self.partying:
+                    if not self.isPaused:
+                        self.leds.party()
+                    else:
+                        time.sleep(0.2)
+
+        except KeyboardInterrupt:
+            self.leds.pause()
             
     def pause(self):
         print("Pausing")
@@ -43,11 +46,16 @@ class Controller(object):
     def restart(self):
         print("Restarting")
         self.isPaused = False
+        self.partying = False
+        self.leds.interrupt = False
 
     def party(self):
         print("Partying")
         self.partying = True
+        self.leds.interrupt = False
 
     def trains(self):
         print("Running trains")
+        self.leds.pause()
         self.partying = False
+        self.leds.interrupt = True
