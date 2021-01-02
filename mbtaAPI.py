@@ -17,20 +17,14 @@ def getRequest(method, parameters=None):
 
 
 def getTrains():
-    try:
-        # Get trains going into Boston
-        data = getRequest("vehicles", {"filter[route]": ROUTE, "filter[direction_id]": 1})
-        return data
-    except Exception:
-        logging.error("Train request failed")
+    # Get trains going into Boston
+    data = getRequest("vehicles", {"filter[route]": ROUTE, "filter[direction_id]": 1})
+    return data
 
 
 def getStops():
-    try:
-        data = getRequest("stops", {"filter[route]" : ROUTE})
-        return data
-    except Exception:
-        logging.error("Stops request failed")
+    data = getRequest("stops", {"filter[route]" : ROUTE})
+    return data
 
 
 def getPrediction(stopID):

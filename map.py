@@ -1,6 +1,8 @@
 import mbtaAPI
 import util
 import datetime
+import logging
+import time
 
 from var import *
 
@@ -59,7 +61,18 @@ class Stops(object):
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])
 
-        resp = mbtaAPI.getStops()['data']
+        resp = None
+        errorRecoveryTime = 5
+        while resp is None:
+            try:
+                resp = mbtaAPI.getStops()['data']
+            except Exception:
+                logging.error("Failed to get stops, trying again in "+str(errorRecoveryTime)+" seconds")
+                time.sleep(errorRecoveryTime)
+                if (errorRecoveryTime > 60 and errorRecoveryTime != 3600):
+                    errorRecoveryTime = 3600
+                else:
+                    errorRecoveryTime += 5
 
         # init allStops
         for stop in resp:
@@ -189,7 +202,19 @@ class Trains(object):
         return abbrTrains
     
     def update(self, stops, allStops):
-        resp = mbtaAPI.getTrains()['data']
+        errorRecoveryTime = 5
+        resp = None
+        while resp is None:
+            try:
+                resp = mbtaAPI.getTrains()['data']
+            except Exception:
+                logging.error("Failed to get trains, trying again in "+str(errorRecoveryTime)+" seconds")
+                time.sleep(errorRecoveryTime)
+                if (errorRecoveryTime > 60 and errorRecoveryTime != 3600):
+                    errorRecoveryTime = 3600
+                else:
+                    errorRecoveryTime += 5
+
         self.pixelList = []
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])

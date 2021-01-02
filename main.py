@@ -49,7 +49,7 @@ def toggleButton():
 def run():
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
-    logging.basicConfig(filename='debug.log', filemode='w', level=logging.INFO)
+    logging.basicConfig(filename='debug.log', filemode='w', level=logging.WARNING)
 
     button = Button(21)
     button.when_pressed = toggleButton

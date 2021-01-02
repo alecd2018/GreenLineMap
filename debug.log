@@ -1,4 +1,23 @@
 INFO:root:Starting server at 0.0.0.0
 INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:Partying
 INFO:root:Pausing
 INFO:root:Lights out
+INFO:root:Restarting
+INFO:root:Partying
+INFO:root:Pausing
+INFO:root:Lights out
+INFO:root:Restarting
+INFO:root:Partying
+INFO:root:Pausing
+INFO:root:Lights out
+INFO:root:Restarting
+ERROR:root:Failed to get trains, trying again in 5 seconds
+ERROR:root:Failed to get trains, trying again in 5 seconds
+ERROR:root:Failed to get trains, trying again in 5 seconds
+ERROR:root:Failed to get trains, trying again in 5 seconds
+INFO:root:Partying
+INFO:root:Pausing
+INFO:root:Lights out
+INFO:root:Restarting
+ERROR:root:Failed to get trains, trying again in 5 seconds
