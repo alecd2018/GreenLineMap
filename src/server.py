@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 
 def run():
-    logging.info("Starting server at " + SERVER_IP)
-    app.run(host=SERVER_IP, port=80)
+    print("Starting server at " + SERVER_IP+":"+str(PORT))
+    app.run(host=SERVER_IP, port=PORT)
 
 
 toggle_cb = None

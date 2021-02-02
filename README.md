@@ -58,14 +58,12 @@ Follow the steps below for cloning and running a local copy.
 
 To get a local copy up and running follow these simple steps. *Note*: the following steps are for running a local demo of the live map *without* the RaspberryPi and LEDs. Since the LED's require an extra library, please use the **demo** branch for this section.
 
+The following instructions were tested and executed on Ubuntu Linux, and they may differ for different OS's.
+
 ### Prerequisites
 
 This project requires the following software:
 - [Anaconda](https://www.anaconda.com/): I used [miniconda](https://docs.conda.io/en/latest/miniconda.html).
-- **Optional**: The following parts are what I used for building the display. 
-  - RaspberyPi and Power Supply
-  - WS2812B LED Light strip
-  - Wood, paint, and other miscellaneous materials.
 
 
 ### Installation
@@ -92,9 +90,12 @@ To run a local copy *with no LED lights*, run the following:
 
 ```
 conda activate mbta
-python main.py
+sudo <PATH_TO_MINICONDA_INSTALLATION>/envs/mbta/bin/python src/main.py
 ```
 
+While in use, you can pause and resume the program via a Flask web server. Go to *localhost:8080/toggle/off* to pause the prgoram, and go to *localhost:8080/toggle/on* to resume it.
+
+To stop the program, press **Ctrl+C** twice. Once to stop the trains thread and the other to stop the flask server thread.
 
 
 <!-- ACKNOWLEDGEMENTS -->
