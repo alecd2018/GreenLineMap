@@ -1,7 +1,6 @@
 # main.py contains the controls necessary to start and stop the led program
 from control import Controller
 from server import *
-from gpiozero import Button
 import argparse
 import logging
 
@@ -9,39 +8,27 @@ import logging
 controller = Controller()
 
 
-def restart():
-    controller.restart()
-
-
-def stop():
-    controller.pause()
-
-
 def togglePower(p):
     if p == "off":
-        stop()
+        controller.pause()
         return "Pausing LED Program"
     elif p == "on" and controller.isPaused:
-        restart()
+        controller.restart()
         return "Restarting LED Program"
     else :
         return "Already on"
 
 
 def setMode(m):
-    if m == "party":   
-        controller.party()
-        return "Partying"
-    else:
-        controller.trains()
-        return "Tracking trains"
+    # in demo branch, only trains mode is supported
+    controller.trains()
 
 
 def toggleButton():
     if controller.isPaused:
-        restart()
+        controller.restart()
     elif controller.partying:
-        stop()
+        controller.pause()
     else:
         controller.party()
 
@@ -51,10 +38,7 @@ def run():
         logging.root.removeHandler(handler)
     logging.basicConfig(filename='debug.log', filemode='w', level=logging.WARNING)
 
-    button = Button(21)
-    button.when_pressed = toggleButton
-
-    # setupServer(togglePower, setMode)
+    setupServer(togglePower, setMode)
     
     try:
         controller.tick()

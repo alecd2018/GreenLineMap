@@ -3,7 +3,6 @@ import var
 import util
 import map
 import time
-import ledControl
 import logging
 
 
@@ -12,7 +11,6 @@ class Controller(object):
     def __init__(self):
         self.state = 0
         self.map = map.Map()
-        self.leds = ledControl.LEDControl()
         self.isPaused = False
         self.partying = False
 
@@ -20,23 +18,15 @@ class Controller(object):
 
         while True:
             try: 
-                while not self.partying:
-                    if not self.isPaused:
+                if not self.isPaused:
 
-                        trains, stops = self.map.tick()
-                        self.leds.tick(trains, stops)
+                    trains, stops = self.map.tick()
 
-                        textMap = self.map.textMap()
-                        logging.debug(textMap)
-                        # print(textMap)
+                    textMap = self.map.textMap()
+                    logging.debug(textMap)
+                    print(textMap)
 
-                    time.sleep(1)
-
-                while self.partying:
-                    if not self.isPaused:
-                        self.leds.party()
-                    else:
-                        time.sleep(0.2)
+                time.sleep(1)
 
             except ConnectionError:
                 # wait 5 seconds, then try again
@@ -46,21 +36,16 @@ class Controller(object):
     def pause(self):
         logging.info("Pausing")
         self.isPaused = True
-        self.leds.pause()
 
     def restart(self):
         logging.info("Restarting")
         self.isPaused = False
         self.partying = False
-        self.leds.interrupt = False
 
     def party(self):
         logging.info("Partying")
         self.partying = True
-        self.leds.interrupt = False
 
     def trains(self):
         logging.info("Running trains")
-        self.leds.pause()
         self.partying = False
-        self.leds.interrupt = True
