@@ -54,7 +54,7 @@ def run():
     button = Button(21)
     button.when_pressed = toggleButton
 
-    setupServer(togglePower, setMode)
+    # setupServer(togglePower, setMode)
     
     try:
         controller.tick()

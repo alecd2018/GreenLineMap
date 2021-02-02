@@ -28,6 +28,7 @@ class Controller(object):
 
                         textMap = self.map.textMap()
                         logging.debug(textMap)
+                        # print(textMap)
 
                     time.sleep(1)
 

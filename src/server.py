@@ -1,4 +1,4 @@
-# server.py launches a Python based server for starting and stopping the led pr
+# server.py launches a Python based server for starting and stopping the led program
 
 from var import *
 from flask import Flask, make_response

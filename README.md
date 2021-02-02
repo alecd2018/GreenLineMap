@@ -56,7 +56,7 @@ Follow the steps below for cloning and running a local copy.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these simple steps. *Note*: the following steps are for running a local demo of the live map *without* the RaspberryPi and LEDs. Since the LED's require an extra library, please use the **demo** branch for this section.
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ Copy and paste the following script into your terminal to run the installation.
   conda activate mbta
 
   # Install dependent libraries
-  pip install flask ws281x requests
+  pip install flask requests
   ```
 
 
