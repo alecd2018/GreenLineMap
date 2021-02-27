@@ -1,0 +1,2 @@
+INFO:werkzeug: * Running on http://localhost:8080/ (Press CTRL+C to quit)
+WARNING:root:Received keyboard interrupt, shutting down

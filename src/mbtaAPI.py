@@ -8,22 +8,23 @@ from var import *
 def getRequest(method, parameters=None):
     parameters = parameters or {}
     parameters['api_key'] = API_KEY
+    url = MBTA_BASE_URL + method
     # parameters['format'] = 'json'
     data = json.loads(requests.get(
-        MBTA_BASE_URL + method,
+        url,
         params=parameters
     ).text)
     return data
 
 
-def getTrains():
+def getTrains(route):
     # Get trains going both directions
-    data = getRequest("vehicles", {"filter[route]": ROUTE})
+    data = getRequest("vehicles", {"filter[route]": route})
     return data
 
 
-def getStops():
-    data = getRequest("stops", {"filter[route]" : ROUTE})
+def getStops(route):
+    data = getRequest("stops", {"filter[route]" : route})
     return data
 
 

@@ -6,17 +6,33 @@ import time
 
 from var import *
 
-class Map(object):
+class Lines(object):
 
     def __init__(self):
-        self.stops = Stops()
-        self.trains = {}
-        self.name = "Green - C"
+        self.lines = []
+        for line in LINE_LIST:
+            self.lines.append(Line(line))
 
     def tick(self):
-        self.trains = Trains()
+        print('')
+        for line in self.lines:
+            trains, stops = line.tick()
 
-        self.trains.update(self.stops.stops, self.stops.allStops)
+            textMap = line.textMap()
+            logging.debug(textMap)
+            print(textMap)
+
+class Line(object):
+
+    def __init__(self, name):
+        self.name = name
+        self.trains = {}
+        self.stops = Stops(self.name)
+
+    def tick(self):
+        self.trains = Trains(self.stops.sortedStops)
+
+        self.trains.update(self.name, self.stops.stops)
 
         return (self.trains, self.stops)
 
@@ -37,7 +53,7 @@ class Map(object):
             return '-'
 
     def textMap(self):
-        return "GreenLine - C" + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
+        return self.name + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
 
 
 class Stop(object):
@@ -54,18 +70,19 @@ class Stop(object):
 
 class Stops(object):
 
-    def __init__(self):
+    def __init__(self, name):
         self.stops = {}
-        self.allStops = {}
+        self.sortedStops = []
         self.pixelList = []
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])
 
+        # get API data on stops
         resp = None
         errorRecoveryTime = 5
         while resp is None:
             try:
-                resp = mbtaAPI.getStops()['data']
+                resp = mbtaAPI.getStops(name)['data']
             except Exception:
                 logging.error("Failed to get stops, trying again in "+str(errorRecoveryTime)+" seconds")
                 time.sleep(errorRecoveryTime)
@@ -74,41 +91,35 @@ class Stops(object):
                 else:
                     errorRecoveryTime += 5
 
-        # init allStops
+        # init stops
         for stop in resp:
             lat = stop['attributes']['latitude']
             lon = stop['attributes']['longitude']
             loc = (lat, lon)
             stopObj = Stop(stop['id'], stop["attributes"]['name'], loc)
-            self.allStops[stop['id']] = stopObj
-
-        # init stops
-        for stop in self.filterAbbrStops(resp):
-            lat = stop['attributes']['latitude']
-            lon = stop['attributes']['longitude']
-            loc = (lat, lon)
-            stopObj = Stop(stop['id'], stop["attributes"]['name'], loc)
             self.stops[stop['id']] = stopObj
+            self.sortedStops.append(stop['id'])
 
+        # get total Dist from end to end
         totalDist = 0
-        for i in range(len(ABBR_STOP_LIST)-1):
-            stopA = self.stops[ABBR_STOP_LIST[i]]
-            stopB = self.stops[ABBR_STOP_LIST[i+1]]
+        for i in range(len(self.sortedStops)-1):
+            stopA = self.stops[self.sortedStops[i]]
+            stopB = self.stops[self.sortedStops[i+1]]
             totalDist += util.distTwoPoints(stopA.location, stopB.location)
 
-        for i in range(len(ABBR_STOP_LIST)-1):
-            stopA = self.stops[ABBR_STOP_LIST[i]]
-            stopB = self.stops[ABBR_STOP_LIST[i+1]]
+        # initialize pixel list of stops
+        for i in range(len(self.sortedStops)-1):
+            stopA = self.stops[self.sortedStops[i]]
+            stopB = self.stops[self.sortedStops[i+1]]
             dist = util.distTwoPoints(stopA.location, stopB.location)
 
             if i == 0:
                 stopA.pixelLocation = 0
 
             pixDist = round(TOTAL_NUM_PIXELS * dist / totalDist)
-            stopB.pixelLocation = stopA.pixelLocation + pixDist
-
-            if stopB.pixelLocation == TOTAL_NUM_PIXELS:
-                stopB.pixelLocation -= 1
+            stopB.pixelLocation = stopA.pixelLocation + pixDist 
+            if stopB.pixelLocation >= TOTAL_NUM_PIXELS:
+                 stopB.pixelLocation = TOTAL_NUM_PIXELS - 1
 
             self.pixelList[stopB.pixelLocation].append(stopB)
 
@@ -118,10 +129,11 @@ class Stops(object):
             res += str(self.stops[stop])+'\n'
         return res
 
+    # used for LED version
     def filterAbbrStops(self, resp):
         abbrList = []
         for stop in resp:
-            if stop['id'] in ABBR_STOP_LIST:
+            if stop['id'] in self.sortedStops:
                 abbrList.append(stop)
         return abbrList
 
@@ -144,9 +156,10 @@ class Train(object):
 
 class Trains(object):
 
-    def __init__(self):
+    def __init__(self, sortedStops):
         self.trains = {}
         self.pixelList = []
+        self.sortedStops = sortedStops
         for i in range(TOTAL_NUM_PIXELS):
             self.pixelList.append([])
 
@@ -174,7 +187,6 @@ class Trains(object):
         prevStop = train.prev.location
         nextStop = train.next.location
         distPrev = util.distTwoPoints(train.location, prevStop)
-        # distNext = util.distTwoPoints(self.trains[train].location, self.trains[train].next)
         distSegment = util.distTwoPoints(nextStop, prevStop)
 
         prevPixel = train.prev.pixelLocation
@@ -191,22 +203,22 @@ class Trains(object):
         abbrTrains = {}
         for train in self.trains:
             t = self.trains[train]
-            if t.next.id in ABBR_STOP_LIST[1:]:
+            if t.next.id in self.sortedStops[1:]:
                 t.next = stops[t.next.id]
                 t.prev = stops[t.prev.id]
                 abbrTrains[train] = t
-            elif t.prev.id in ABBR_STOP_LIST[:-1]:
+            elif t.prev.id in self.sortedStops[:-1]:
                 t.next = stops[t.next.id]
                 t.prev = stops[t.prev.id]
                 abbrTrains[train] = t
         return abbrTrains
     
-    def update(self, stops, allStops):
+    def update(self, name, stops):
         errorRecoveryTime = 5
         resp = None
         while resp is None:
             try:
-                resp = mbtaAPI.getTrains()['data']
+                resp = mbtaAPI.getTrains(name)['data']
             except Exception:
                 logging.error("Failed to get trains, trying again in "+str(errorRecoveryTime)+" seconds")
                 time.sleep(errorRecoveryTime)
@@ -239,10 +251,10 @@ class Trains(object):
         for train in self.trains:
             closest = ("", "")
             minDist = 10000
-            for i in range(len(STOP_LIST)-1):
+            for i in range(len(self.sortedStops)-1):
                 t = self.trains[train]
-                stopA = allStops[STOP_LIST[i]]
-                stopB = allStops[STOP_LIST[i+1]]
+                stopA = stops[self.sortedStops[i]]
+                stopB = stops[self.sortedStops[i+1]]
                 distToSegment = util.distPointLine(t.location, stopA.location, stopB.location)
 
                 if distToSegment < minDist:
@@ -253,8 +265,6 @@ class Trains(object):
             t.prev = closest[0]
             t.next = closest[1]
 
-        self.trains = self.filterAbbrTrains(stops)
-
         self.pointUpdate()
 
     def pointUpdate(self):
@@ -264,7 +274,3 @@ class Trains(object):
             pixel = self.getTrainPixel(self.trains[train])
 
             self.pixelList[pixel].append(self.trains[train])
-
-    def interpolateUpdate(self, lastLoc, lastTime, stops):
-        # TODO
-        return

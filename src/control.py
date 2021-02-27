@@ -10,9 +10,8 @@ class Controller(object):
 
     def __init__(self):
         self.state = 0
-        self.map = map.Map()
+        self.map = map.Lines()
         self.isPaused = False
-        self.partying = False
 
     def tick(self):
 
@@ -20,11 +19,7 @@ class Controller(object):
             try: 
                 if not self.isPaused:
 
-                    trains, stops = self.map.tick()
-
-                    textMap = self.map.textMap()
-                    logging.debug(textMap)
-                    print(textMap)
+                    self.map.tick()
 
                 time.sleep(1)
 
@@ -40,12 +35,6 @@ class Controller(object):
     def restart(self):
         logging.info("Restarting")
         self.isPaused = False
-        self.partying = False
-
-    def party(self):
-        logging.info("Partying")
-        self.partying = True
 
     def trains(self):
         logging.info("Running trains")
-        self.partying = False

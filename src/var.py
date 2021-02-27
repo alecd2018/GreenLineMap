@@ -7,13 +7,20 @@ MBTA_BASE_URL = "https://api-v3.mbta.com/"
 SERVER_IP = "localhost"
 PORT=8080
 
-ROUTE = "Green-C"
-
-API_FILTER = "filter%5Broute%5D=Green-C&filter%5Bdirection_id%5D=1"
+LINE_LIST = [
+    "Red",
+    "Mattapan",
+    "Blue",
+    "Orange",
+    "Green-B",
+    "Green-C",
+    "Green-D",
+    "Green-E"
+]
 
 TOTAL_NUM_PIXELS = 120
 
-STOP_LIST = [
+GREEN_C_STOP_LIST = [
     'place-clmnl',
     'place-engav',
     'place-denrd',
@@ -38,4 +45,5 @@ STOP_LIST = [
     'place-north'
 ]
 
-ABBR_STOP_LIST = STOP_LIST
+ABBR_STOP_LIST = GREEN_C_STOP_LIST
+LED_ROUTE = "Green-C"
