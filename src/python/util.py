@@ -25,6 +25,3 @@ def distPointLine(p, a, b):
     dy = y - y3
     dist = math.sqrt(dx * dx + dy * dy)
     return dist
-
-
-# TODO: add color functions

@@ -21,7 +21,7 @@ class Lines(object):
 
             textMap = line.textMap()
             logging.debug(textMap)
-            # print(textMap)
+            print(textMap)
 
     def jsonify(self):
         print('hi')
@@ -38,9 +38,10 @@ class Line(object):
         self.name = name
         self.trains = {}
         self.stops = Stops(self.name)
+        self.numPixels = self.stops.getNumPixels()
 
     def tick(self):
-        self.trains = Trains(self.stops.sortedStops)
+        self.trains = Trains(self.stops.sortedStops, self.numPixels)
 
         self.trains.update(self.name, self.stops.stops)
 
@@ -63,10 +64,12 @@ class Line(object):
             return '-'
 
     def textMap(self):
-        return self.name + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
+        return self.name + ' ' + ''.join(map(self.marker, range(self.numPixels)))
 
     def jsonify(self):
         data = {
+            'name': self.name,
+            'numPixels':str(self.numPixels),
             'stops':{},
             'trains':{}
         }
@@ -90,7 +93,6 @@ class Line(object):
         return data
 
 
-
 class Stop(object):
 
     def __init__(self, id, name, location):
@@ -109,8 +111,6 @@ class Stops(object):
         self.stops = {}
         self.sortedStops = []
         self.pixelList = []
-        for i in range(TOTAL_NUM_PIXELS):
-            self.pixelList.append([])
 
         # get API data on stops
         resp = None
@@ -125,7 +125,7 @@ class Stops(object):
                     errorRecoveryTime = 3600
                 else:
                     errorRecoveryTime += 5
-
+                    
         # init stops
         for stop in resp:
             lat = stop['attributes']['latitude']
@@ -142,6 +142,22 @@ class Stops(object):
             stopB = self.stops[self.sortedStops[i+1]]
             totalDist += util.distTwoPoints(stopA.location, stopB.location)
 
+        
+        self.initPixelList(totalDist)
+    
+    def __str__(self):
+        res = ""
+        for stop in self.stops:
+            res += str(self.stops[stop])+'\n'
+        return res
+
+    def initPixelList(self, totalDist):
+
+        self.numPixels = round(totalDist / PIXEL_DISTANCE)
+
+        for i in range(self.numPixels):
+            self.pixelList.append([])
+
         # initialize pixel list of stops
         for i in range(len(self.sortedStops)-1):
             stopA = self.stops[self.sortedStops[i]]
@@ -151,18 +167,16 @@ class Stops(object):
             if i == 0:
                 stopA.pixelLocation = 0
 
-            pixDist = round(TOTAL_NUM_PIXELS * dist / totalDist)
+            pixDist = round(self.numPixels * dist / totalDist)
             stopB.pixelLocation = stopA.pixelLocation + pixDist 
-            if stopB.pixelLocation >= TOTAL_NUM_PIXELS:
-                 stopB.pixelLocation = TOTAL_NUM_PIXELS - 1
+
+            if stopB.pixelLocation >= self.numPixels:
+                 stopB.pixelLocation = self.numPixels - 1
 
             self.pixelList[stopB.pixelLocation].append(stopB)
 
-    def __str__(self):
-        res = ""
-        for stop in self.stops:
-            res += str(self.stops[stop])+'\n'
-        return res
+    def getNumPixels(self):
+        return self.numPixels
 
     # used for LED version
     def filterAbbrStops(self, resp):
@@ -192,11 +206,12 @@ class Train(object):
 
 class Trains(object):
 
-    def __init__(self, sortedStops):
+    def __init__(self, sortedStops, numPixels):
         self.trains = {}
         self.pixelList = []
         self.sortedStops = sortedStops
-        for i in range(TOTAL_NUM_PIXELS):
+        self.numPixels = numPixels
+        for i in range(self.numPixels):
             self.pixelList.append([])
 
     def __str__(self):
@@ -230,8 +245,8 @@ class Trains(object):
         segmentPixels = nextPixel - prevPixel
         pixel = round(segmentPixels * distPrev / distSegment) + prevPixel
 
-        if pixel >= TOTAL_NUM_PIXELS:
-            pixel = TOTAL_NUM_PIXELS - 1
+        if pixel >= self.numPixels:
+            pixel = self.numPixels - 1
 
         return pixel
 
@@ -264,7 +279,7 @@ class Trains(object):
                     errorRecoveryTime += 5
 
         self.pixelList = []
-        for i in range(TOTAL_NUM_PIXELS):
+        for i in range(self.numPixels):
             self.pixelList.append([])
         
         oldLoc = 0

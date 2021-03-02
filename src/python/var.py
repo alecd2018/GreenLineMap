@@ -19,31 +19,6 @@ LINE_LIST = [
 ]
 
 TOTAL_NUM_PIXELS = 120
+PIXEL_DISTANCE = 0.0015
 
-GREEN_C_STOP_LIST = [
-    'place-clmnl',
-    'place-engav',
-    'place-denrd',
-    'place-tapst',
-    'place-bcnwa',
-    'place-fbkst',
-    'place-bndhl',
-    'place-sumav',
-    'place-cool',
-    'place-stpul',
-    'place-kntst',
-    'place-hwsst',
-    'place-smary',
-    'place-kencl',
-    'place-hymnl',
-    'place-coecl',
-    'place-armnl',
-    'place-boyls',
-    'place-pktrm',
-    'place-gover',
-    'place-haecl',
-    'place-north'
-]
-
-ABBR_STOP_LIST = GREEN_C_STOP_LIST
 LED_ROUTE = "Green-C"
