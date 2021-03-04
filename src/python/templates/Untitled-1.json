@@ -1,0 +1,1969 @@
+{
+    "data": {
+        "Red": {
+            "name": "Red",
+            "numPixels": "200",
+            "stops": {
+                "place-alfcl": {
+                    "loc": [
+                        42.395428,
+                        -71.142483
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Alewife"
+                },
+                "place-davis": {
+                    "loc": [
+                        42.39674,
+                        -71.121815
+                    ],
+                    "pixelLoc": 14,
+                    "name": "Davis"
+                },
+                "place-portr": {
+                    "loc": [
+                        42.3884,
+                        -71.119149
+                    ],
+                    "pixelLoc": 20,
+                    "name": "Porter"
+                },
+                "place-harsq": {
+                    "loc": [
+                        42.373362,
+                        -71.118956
+                    ],
+                    "pixelLoc": 30,
+                    "name": "Harvard"
+                },
+                "place-cntsq": {
+                    "loc": [
+                        42.365486,
+                        -71.103802
+                    ],
+                    "pixelLoc": 41,
+                    "name": "Central"
+                },
+                "place-knncl": {
+                    "loc": [
+                        42.362491,
+                        -71.086177
+                    ],
+                    "pixelLoc": 53,
+                    "name": "Kendall/MIT"
+                },
+                "place-chmnl": {
+                    "loc": [
+                        42.361166,
+                        -71.070628
+                    ],
+                    "pixelLoc": 63,
+                    "name": "Charles/MGH"
+                },
+                "place-pktrm": {
+                    "loc": [
+                        42.356395,
+                        -71.062424
+                    ],
+                    "pixelLoc": 69,
+                    "name": "Park Street"
+                },
+                "place-dwnxg": {
+                    "loc": [
+                        42.355518,
+                        -71.060225
+                    ],
+                    "pixelLoc": 71,
+                    "name": "Downtown Crossing"
+                },
+                "place-sstat": {
+                    "loc": [
+                        42.352271,
+                        -71.055242
+                    ],
+                    "pixelLoc": 75,
+                    "name": "South Station"
+                },
+                "place-brdwy": {
+                    "loc": [
+                        42.342622,
+                        -71.056967
+                    ],
+                    "pixelLoc": 82,
+                    "name": "Broadway"
+                },
+                "place-andrw": {
+                    "loc": [
+                        42.330154,
+                        -71.057655
+                    ],
+                    "pixelLoc": 90,
+                    "name": "Andrew"
+                },
+                "place-jfk": {
+                    "loc": [
+                        42.320685,
+                        -71.052391
+                    ],
+                    "pixelLoc": 97,
+                    "name": "JFK/UMass"
+                },
+                "place-shmnl": {
+                    "loc": [
+                        42.31129,
+                        -71.053331
+                    ],
+                    "pixelLoc": 103,
+                    "name": "Savin Hill"
+                },
+                "place-fldcr": {
+                    "loc": [
+                        42.300093,
+                        -71.061667
+                    ],
+                    "pixelLoc": 112,
+                    "name": "Fields Corner"
+                },
+                "place-smmnl": {
+                    "loc": [
+                        42.293126,
+                        -71.065738
+                    ],
+                    "pixelLoc": 117,
+                    "name": "Shawmut"
+                },
+                "place-asmnl": {
+                    "loc": [
+                        42.28452,
+                        -71.063777
+                    ],
+                    "pixelLoc": 123,
+                    "name": "Ashmont"
+                },
+                "place-nqncy": {
+                    "loc": [
+                        42.275275,
+                        -71.029583
+                    ],
+                    "pixelLoc": 147,
+                    "name": "North Quincy"
+                },
+                "place-wlsta": {
+                    "loc": [
+                        42.266514,
+                        -71.020337
+                    ],
+                    "pixelLoc": 155,
+                    "name": "Wollaston"
+                },
+                "place-qnctr": {
+                    "loc": [
+                        42.251809,
+                        -71.005409
+                    ],
+                    "pixelLoc": 169,
+                    "name": "Quincy Center"
+                },
+                "place-qamnl": {
+                    "loc": [
+                        42.233391,
+                        -71.007153
+                    ],
+                    "pixelLoc": 181,
+                    "name": "Quincy Adams"
+                },
+                "place-brntn": {
+                    "loc": [
+                        42.207854,
+                        -71.001138
+                    ],
+                    "pixelLoc": 198,
+                    "name": "Braintree"
+                }
+            },
+            "trains": {
+                "R-5469714E": {
+                    "loc": [
+                        42.20749,
+                        -71.00156
+                    ],
+                    "direction": 1,
+                    "prev": "place-qamnl",
+                    "next": "place-brntn",
+                    "timestamp": "21:12:10"
+                },
+                "R-54697085": {
+                    "loc": [
+                        42.39673,
+                        -71.12245
+                    ],
+                    "direction": 0,
+                    "prev": "place-alfcl",
+                    "next": "place-davis",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696FE1": {
+                    "loc": [
+                        42.35266,
+                        -71.05536
+                    ],
+                    "direction": 1,
+                    "prev": "place-dwnxg",
+                    "next": "place-sstat",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696FD8": {
+                    "loc": [
+                        42.27582,
+                        -71.03012
+                    ],
+                    "direction": 1,
+                    "prev": "place-asmnl",
+                    "next": "place-nqncy",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696ED7": {
+                    "loc": [
+                        42.39621,
+                        -71.14054
+                    ],
+                    "direction": 0,
+                    "prev": "place-alfcl",
+                    "next": "place-davis",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696DC2": {
+                    "loc": [
+                        42.30878,
+                        -71.05441
+                    ],
+                    "direction": 0,
+                    "prev": "place-shmnl",
+                    "next": "place-fldcr",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696DB5": {
+                    "loc": [
+                        42.36147,
+                        -71.07437
+                    ],
+                    "direction": 1,
+                    "prev": "place-knncl",
+                    "next": "place-chmnl",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696DA4": {
+                    "loc": [
+                        42.39676,
+                        -71.12241
+                    ],
+                    "direction": 1,
+                    "prev": "place-alfcl",
+                    "next": "place-davis",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696DA1": {
+                    "loc": [
+                        42.27994,
+                        -71.033
+                    ],
+                    "direction": 0,
+                    "prev": "place-asmnl",
+                    "next": "place-nqncy",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696D29": {
+                    "loc": [
+                        42.28458,
+                        -71.06377
+                    ],
+                    "direction": 1,
+                    "prev": "place-smmnl",
+                    "next": "place-asmnl",
+                    "timestamp": "21:12:10"
+                },
+                "R-54696915": {
+                    "loc": [
+                        42.20749,
+                        -71.00173
+                    ],
+                    "direction": 1,
+                    "prev": "place-qamnl",
+                    "next": "place-brntn",
+                    "timestamp": "21:12:10"
+                },
+                "R-546967EE": {
+                    "loc": [
+                        42.32915,
+                        -71.05668
+                    ],
+                    "direction": 0,
+                    "prev": "place-andrw",
+                    "next": "place-jfk",
+                    "timestamp": "21:12:10"
+                },
+                "R-5469665D": {
+                    "loc": [
+                        42.35524,
+                        -71.06018
+                    ],
+                    "direction": 0,
+                    "prev": "place-dwnxg",
+                    "next": "place-sstat",
+                    "timestamp": "21:12:10"
+                },
+                "R-546960B9": {
+                    "loc": [
+                        42.31624,
+                        -71.05217
+                    ],
+                    "direction": 1,
+                    "prev": "place-jfk",
+                    "next": "place-shmnl",
+                    "timestamp": "21:12:10"
+                },
+                "R-546960B8": {
+                    "loc": [
+                        42.37469,
+                        -71.11877
+                    ],
+                    "direction": 1,
+                    "prev": "place-portr",
+                    "next": "place-harsq",
+                    "timestamp": "21:12:10"
+                },
+                "R-54695E76": {
+                    "loc": [
+                        42.3723,
+                        -71.11585
+                    ],
+                    "direction": 0,
+                    "prev": "place-harsq",
+                    "next": "place-cntsq",
+                    "timestamp": "21:12:10"
+                }
+            }
+        },
+        "Mattapan": {
+            "name": "Mattapan",
+            "numPixels": "29",
+            "stops": {
+                "place-asmnl": {
+                    "loc": [
+                        42.28452,
+                        -71.063777
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Ashmont"
+                },
+                "place-cedgr": {
+                    "loc": [
+                        42.279629,
+                        -71.060394
+                    ],
+                    "pixelLoc": 4,
+                    "name": "Cedar Grove"
+                },
+                "place-butlr": {
+                    "loc": [
+                        42.272429,
+                        -71.062519
+                    ],
+                    "pixelLoc": 9,
+                    "name": "Butler"
+                },
+                "place-miltt": {
+                    "loc": [
+                        42.270349,
+                        -71.067266
+                    ],
+                    "pixelLoc": 12,
+                    "name": "Milton"
+                },
+                "place-cenav": {
+                    "loc": [
+                        42.270027,
+                        -71.073444
+                    ],
+                    "pixelLoc": 16,
+                    "name": "Central Avenue"
+                },
+                "place-valrd": {
+                    "loc": [
+                        42.268347,
+                        -71.081343
+                    ],
+                    "pixelLoc": 21,
+                    "name": "Valley Road"
+                },
+                "place-capst": {
+                    "loc": [
+                        42.267563,
+                        -71.087338
+                    ],
+                    "pixelLoc": 25,
+                    "name": "Capen Street"
+                },
+                "place-matt": {
+                    "loc": [
+                        42.26762,
+                        -71.092486
+                    ],
+                    "pixelLoc": 28,
+                    "name": "Mattapan"
+                }
+            },
+            "trains": {
+                "G-10111": {
+                    "loc": [
+                        42.26985,
+                        -71.07508
+                    ],
+                    "direction": 0,
+                    "prev": "place-cenav",
+                    "next": "place-valrd",
+                    "timestamp": "21:12:10"
+                },
+                "G-10101": {
+                    "loc": [
+                        42.26756,
+                        -71.09225
+                    ],
+                    "direction": 1,
+                    "prev": "place-capst",
+                    "next": "place-matt",
+                    "timestamp": "21:12:10"
+                },
+                "G-10031": {
+                    "loc": [
+                        42.26775,
+                        -71.09122
+                    ],
+                    "direction": 1,
+                    "prev": "place-capst",
+                    "next": "place-matt",
+                    "timestamp": "21:12:10"
+                }
+            }
+        },
+        "Blue": {
+            "name": "Blue",
+            "numPixels": "66",
+            "stops": {
+                "place-bomnl": {
+                    "loc": [
+                        42.361365,
+                        -71.062037
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Bowdoin"
+                },
+                "place-gover": {
+                    "loc": [
+                        42.359705,
+                        -71.059215
+                    ],
+                    "pixelLoc": 2,
+                    "name": "Government Center"
+                },
+                "place-state": {
+                    "loc": [
+                        42.358978,
+                        -71.057598
+                    ],
+                    "pixelLoc": 3,
+                    "name": "State"
+                },
+                "place-aqucl": {
+                    "loc": [
+                        42.359784,
+                        -71.051652
+                    ],
+                    "pixelLoc": 7,
+                    "name": "Aquarium"
+                },
+                "place-mvbcl": {
+                    "loc": [
+                        42.369119,
+                        -71.03953
+                    ],
+                    "pixelLoc": 17,
+                    "name": "Maverick"
+                },
+                "place-aport": {
+                    "loc": [
+                        42.374262,
+                        -71.030395
+                    ],
+                    "pixelLoc": 24,
+                    "name": "Airport"
+                },
+                "place-wimnl": {
+                    "loc": [
+                        42.37964,
+                        -71.022865
+                    ],
+                    "pixelLoc": 30,
+                    "name": "Wood Island"
+                },
+                "place-orhte": {
+                    "loc": [
+                        42.386867,
+                        -71.004736
+                    ],
+                    "pixelLoc": 43,
+                    "name": "Orient Heights"
+                },
+                "place-sdmnl": {
+                    "loc": [
+                        42.390501,
+                        -70.997123
+                    ],
+                    "pixelLoc": 49,
+                    "name": "Suffolk Downs"
+                },
+                "place-bmmnl": {
+                    "loc": [
+                        42.397542,
+                        -70.992319
+                    ],
+                    "pixelLoc": 55,
+                    "name": "Beachmont"
+                },
+                "place-rbmnl": {
+                    "loc": [
+                        42.407843,
+                        -70.992533
+                    ],
+                    "pixelLoc": 62,
+                    "name": "Revere Beach"
+                },
+                "place-wondl": {
+                    "loc": [
+                        42.41342,
+                        -70.991648
+                    ],
+                    "pixelLoc": 65,
+                    "name": "Wonderland"
+                }
+            },
+            "trains": {}
+        },
+        "Orange": {
+            "name": "Orange",
+            "numPixels": "114",
+            "stops": {
+                "place-forhl": {
+                    "loc": [
+                        42.300523,
+                        -71.113686
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Forest Hills"
+                },
+                "place-grnst": {
+                    "loc": [
+                        42.310525,
+                        -71.107414
+                    ],
+                    "pixelLoc": 8,
+                    "name": "Green Street"
+                },
+                "place-sbmnl": {
+                    "loc": [
+                        42.317062,
+                        -71.104248
+                    ],
+                    "pixelLoc": 13,
+                    "name": "Stony Brook"
+                },
+                "place-jaksn": {
+                    "loc": [
+                        42.323132,
+                        -71.099592
+                    ],
+                    "pixelLoc": 18,
+                    "name": "Jackson Square"
+                },
+                "place-rcmnl": {
+                    "loc": [
+                        42.331397,
+                        -71.095451
+                    ],
+                    "pixelLoc": 24,
+                    "name": "Roxbury Crossing"
+                },
+                "place-rugg": {
+                    "loc": [
+                        42.336377,
+                        -71.088961
+                    ],
+                    "pixelLoc": 29,
+                    "name": "Ruggles"
+                },
+                "place-masta": {
+                    "loc": [
+                        42.341512,
+                        -71.083423
+                    ],
+                    "pixelLoc": 34,
+                    "name": "Massachusetts Avenue"
+                },
+                "place-bbsta": {
+                    "loc": [
+                        42.34735,
+                        -71.075727
+                    ],
+                    "pixelLoc": 40,
+                    "name": "Back Bay"
+                },
+                "place-tumnl": {
+                    "loc": [
+                        42.349662,
+                        -71.063917
+                    ],
+                    "pixelLoc": 48,
+                    "name": "Tufts Medical Center"
+                },
+                "place-chncl": {
+                    "loc": [
+                        42.352547,
+                        -71.062752
+                    ],
+                    "pixelLoc": 50,
+                    "name": "Chinatown"
+                },
+                "place-dwnxg": {
+                    "loc": [
+                        42.355518,
+                        -71.060225
+                    ],
+                    "pixelLoc": 53,
+                    "name": "Downtown Crossing"
+                },
+                "place-state": {
+                    "loc": [
+                        42.358978,
+                        -71.057598
+                    ],
+                    "pixelLoc": 56,
+                    "name": "State"
+                },
+                "place-haecl": {
+                    "loc": [
+                        42.363021,
+                        -71.05829
+                    ],
+                    "pixelLoc": 59,
+                    "name": "Haymarket"
+                },
+                "place-north": {
+                    "loc": [
+                        42.365577,
+                        -71.06129
+                    ],
+                    "pixelLoc": 62,
+                    "name": "North Station"
+                },
+                "place-ccmnl": {
+                    "loc": [
+                        42.373622,
+                        -71.069533
+                    ],
+                    "pixelLoc": 70,
+                    "name": "Community College"
+                },
+                "place-sull": {
+                    "loc": [
+                        42.383975,
+                        -71.076994
+                    ],
+                    "pixelLoc": 79,
+                    "name": "Sullivan Square"
+                },
+                "place-astao": {
+                    "loc": [
+                        42.392811,
+                        -71.077257
+                    ],
+                    "pixelLoc": 85,
+                    "name": "Assembly"
+                },
+                "place-welln": {
+                    "loc": [
+                        42.40237,
+                        -71.077082
+                    ],
+                    "pixelLoc": 91,
+                    "name": "Wellington"
+                },
+                "place-mlmnl": {
+                    "loc": [
+                        42.426632,
+                        -71.07411
+                    ],
+                    "pixelLoc": 107,
+                    "name": "Malden Center"
+                },
+                "place-ogmnl": {
+                    "loc": [
+                        42.43668,
+                        -71.071097
+                    ],
+                    "pixelLoc": 113,
+                    "name": "Oak Grove"
+                }
+            },
+            "trains": {
+                "O-54696F63": {
+                    "loc": [
+                        42.34571,
+                        -71.07814
+                    ],
+                    "direction": 1,
+                    "prev": "place-masta",
+                    "next": "place-bbsta",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696E1B": {
+                    "loc": [
+                        42.38677,
+                        -71.07701
+                    ],
+                    "direction": 0,
+                    "prev": "place-sull",
+                    "next": "place-astao",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696DE1": {
+                    "loc": [
+                        42.32725,
+                        -71.09803
+                    ],
+                    "direction": 1,
+                    "prev": "place-jaksn",
+                    "next": "place-rcmnl",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696DC6": {
+                    "loc": [
+                        42.43772,
+                        -71.0708
+                    ],
+                    "direction": 0,
+                    "prev": "place-mlmnl",
+                    "next": "place-ogmnl",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696DAB": {
+                    "loc": [
+                        42.33078,
+                        -71.09613
+                    ],
+                    "direction": 0,
+                    "prev": "place-jaksn",
+                    "next": "place-rcmnl",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696D97": {
+                    "loc": [
+                        42.35881,
+                        -71.05782
+                    ],
+                    "direction": 0,
+                    "prev": "place-dwnxg",
+                    "next": "place-state",
+                    "timestamp": "21:12:08"
+                },
+                "O-54696A10": {
+                    "loc": [
+                        42.42668,
+                        -71.07428
+                    ],
+                    "direction": 1,
+                    "prev": "place-welln",
+                    "next": "place-mlmnl",
+                    "timestamp": "21:12:08"
+                },
+                "O-546968E3": {
+                    "loc": [
+                        42.38587,
+                        -71.07694
+                    ],
+                    "direction": 1,
+                    "prev": "place-sull",
+                    "next": "place-astao",
+                    "timestamp": "21:12:08"
+                },
+                "O-546968DD": {
+                    "loc": [
+                        42.30119,
+                        -71.11376
+                    ],
+                    "direction": 1,
+                    "prev": "place-forhl",
+                    "next": "place-grnst",
+                    "timestamp": "21:12:08"
+                },
+                "O-54695E85": {
+                    "loc": [
+                        42.30122,
+                        -71.11384
+                    ],
+                    "direction": 1,
+                    "prev": "place-forhl",
+                    "next": "place-grnst",
+                    "timestamp": "21:12:08"
+                },
+                "O-54695055": {
+                    "loc": [
+                        42.43223,
+                        -71.07213
+                    ],
+                    "direction": 0,
+                    "prev": "place-mlmnl",
+                    "next": "place-ogmnl",
+                    "timestamp": "21:12:08"
+                }
+            }
+        },
+        "Green-B": {
+            "name": "Green-B",
+            "numPixels": "83",
+            "stops": {
+                "place-lake": {
+                    "loc": [
+                        42.340081,
+                        -71.166769
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Boston College"
+                },
+                "place-sougr": {
+                    "loc": [
+                        42.3396,
+                        -71.157661
+                    ],
+                    "pixelLoc": 6,
+                    "name": "South Street"
+                },
+                "place-chill": {
+                    "loc": [
+                        42.338169,
+                        -71.15316
+                    ],
+                    "pixelLoc": 9,
+                    "name": "Chestnut Hill Avenue"
+                },
+                "place-chswk": {
+                    "loc": [
+                        42.340805,
+                        -71.150711
+                    ],
+                    "pixelLoc": 11,
+                    "name": "Chiswick Road"
+                },
+                "place-sthld": {
+                    "loc": [
+                        42.341614,
+                        -71.146202
+                    ],
+                    "pixelLoc": 14,
+                    "name": "Sutherland Road"
+                },
+                "place-wascm": {
+                    "loc": [
+                        42.343864,
+                        -71.142853
+                    ],
+                    "pixelLoc": 17,
+                    "name": "Washington Street"
+                },
+                "place-wrnst": {
+                    "loc": [
+                        42.348343,
+                        -71.140457
+                    ],
+                    "pixelLoc": 20,
+                    "name": "Warren Street"
+                },
+                "place-alsgr": {
+                    "loc": [
+                        42.348701,
+                        -71.137955
+                    ],
+                    "pixelLoc": 22,
+                    "name": "Allston Street"
+                },
+                "place-grigg": {
+                    "loc": [
+                        42.348545,
+                        -71.134949
+                    ],
+                    "pixelLoc": 24,
+                    "name": "Griggs Street"
+                },
+                "place-harvd": {
+                    "loc": [
+                        42.350243,
+                        -71.131355
+                    ],
+                    "pixelLoc": 27,
+                    "name": "Harvard Avenue"
+                },
+                "place-brico": {
+                    "loc": [
+                        42.351967,
+                        -71.125031
+                    ],
+                    "pixelLoc": 31,
+                    "name": "Packards Corner"
+                },
+                "place-babck": {
+                    "loc": [
+                        42.35182,
+                        -71.12165
+                    ],
+                    "pixelLoc": 33,
+                    "name": "Babcock Street"
+                },
+                "place-plsgr": {
+                    "loc": [
+                        42.351521,
+                        -71.118889
+                    ],
+                    "pixelLoc": 35,
+                    "name": "Pleasant Street"
+                },
+                "place-stplb": {
+                    "loc": [
+                        42.3512,
+                        -71.116104
+                    ],
+                    "pixelLoc": 37,
+                    "name": "Saint Paul Street"
+                },
+                "place-buwst": {
+                    "loc": [
+                        42.350941,
+                        -71.113876
+                    ],
+                    "pixelLoc": 38,
+                    "name": "Boston University West"
+                },
+                "place-bucen": {
+                    "loc": [
+                        42.350082,
+                        -71.106865
+                    ],
+                    "pixelLoc": 43,
+                    "name": "Boston University Central"
+                },
+                "place-buest": {
+                    "loc": [
+                        42.349735,
+                        -71.103889
+                    ],
+                    "pixelLoc": 45,
+                    "name": "Boston University East"
+                },
+                "place-bland": {
+                    "loc": [
+                        42.349293,
+                        -71.100258
+                    ],
+                    "pixelLoc": 47,
+                    "name": "Blandford Street"
+                },
+                "place-kencl": {
+                    "loc": [
+                        42.348949,
+                        -71.095169
+                    ],
+                    "pixelLoc": 50,
+                    "name": "Kenmore"
+                },
+                "place-hymnl": {
+                    "loc": [
+                        42.347888,
+                        -71.087903
+                    ],
+                    "pixelLoc": 55,
+                    "name": "Hynes Convention Center"
+                },
+                "place-coecl": {
+                    "loc": [
+                        42.349974,
+                        -71.077447
+                    ],
+                    "pixelLoc": 62,
+                    "name": "Copley"
+                },
+                "place-armnl": {
+                    "loc": [
+                        42.351902,
+                        -71.070893
+                    ],
+                    "pixelLoc": 67,
+                    "name": "Arlington"
+                },
+                "place-boyls": {
+                    "loc": [
+                        42.35302,
+                        -71.06459
+                    ],
+                    "pixelLoc": 71,
+                    "name": "Boylston"
+                },
+                "place-pktrm": {
+                    "loc": [
+                        42.356395,
+                        -71.062424
+                    ],
+                    "pixelLoc": 74,
+                    "name": "Park Street"
+                },
+                "place-gover": {
+                    "loc": [
+                        42.359705,
+                        -71.059215
+                    ],
+                    "pixelLoc": 77,
+                    "name": "Government Center"
+                },
+                "place-haecl": {
+                    "loc": [
+                        42.363021,
+                        -71.05829
+                    ],
+                    "pixelLoc": 79,
+                    "name": "Haymarket"
+                },
+                "place-north": {
+                    "loc": [
+                        42.365577,
+                        -71.06129
+                    ],
+                    "pixelLoc": 82,
+                    "name": "North Station"
+                }
+            },
+            "trains": {
+                "G-10266": {
+                    "loc": [
+                        42.341,
+                        -71.16742
+                    ],
+                    "direction": 0,
+                    "prev": "place-lake",
+                    "next": "place-sougr",
+                    "timestamp": "21:12:08"
+                },
+                "G-10265": {
+                    "loc": [
+                        42.34413,
+                        -71.14262
+                    ],
+                    "direction": 0,
+                    "prev": "place-wascm",
+                    "next": "place-wrnst",
+                    "timestamp": "21:12:08"
+                },
+                "G-10134": {
+                    "loc": [
+                        42.34959,
+                        -71.13272
+                    ],
+                    "direction": 1,
+                    "prev": "place-grigg",
+                    "next": "place-harvd",
+                    "timestamp": "21:12:08"
+                },
+                "G-10126": {
+                    "loc": [
+                        42.35181,
+                        -71.12181
+                    ],
+                    "direction": 1,
+                    "prev": "place-brico",
+                    "next": "place-babck",
+                    "timestamp": "21:12:08"
+                },
+                "G-10041": {
+                    "loc": [
+                        42.34018,
+                        -71.16709
+                    ],
+                    "direction": 1,
+                    "prev": "place-lake",
+                    "next": "place-sougr",
+                    "timestamp": "21:12:08"
+                },
+                "G-10029": {
+                    "loc": [
+                        42.34018,
+                        -71.16709
+                    ],
+                    "direction": 1,
+                    "prev": "place-lake",
+                    "next": "place-sougr",
+                    "timestamp": "21:12:08"
+                },
+                "G-10023": {
+                    "loc": [
+                        42.3517,
+                        -71.1253
+                    ],
+                    "direction": 1,
+                    "prev": "place-harvd",
+                    "next": "place-brico",
+                    "timestamp": "21:12:08"
+                },
+                "G-10015": {
+                    "loc": [
+                        42.35554,
+                        -71.06322
+                    ],
+                    "direction": 1,
+                    "prev": "place-boyls",
+                    "next": "place-pktrm",
+                    "timestamp": "21:12:08"
+                },
+                "G-10012": {
+                    "loc": [
+                        42.341,
+                        -71.16742
+                    ],
+                    "direction": 0,
+                    "prev": "place-lake",
+                    "next": "place-sougr",
+                    "timestamp": "21:12:08"
+                }
+            }
+        },
+        "Green-C": {
+            "name": "Green-C",
+            "numPixels": "69",
+            "stops": {
+                "place-clmnl": {
+                    "loc": [
+                        42.336142,
+                        -71.149326
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Cleveland Circle"
+                },
+                "place-engav": {
+                    "loc": [
+                        42.336971,
+                        -71.14566
+                    ],
+                    "pixelLoc": 3,
+                    "name": "Englewood Avenue"
+                },
+                "place-denrd": {
+                    "loc": [
+                        42.337807,
+                        -71.141853
+                    ],
+                    "pixelLoc": 6,
+                    "name": "Dean Road"
+                },
+                "place-tapst": {
+                    "loc": [
+                        42.338459,
+                        -71.138702
+                    ],
+                    "pixelLoc": 8,
+                    "name": "Tappan Street"
+                },
+                "place-bcnwa": {
+                    "loc": [
+                        42.339394,
+                        -71.13533
+                    ],
+                    "pixelLoc": 10,
+                    "name": "Washington Square"
+                },
+                "place-fbkst": {
+                    "loc": [
+                        42.339725,
+                        -71.131073
+                    ],
+                    "pixelLoc": 13,
+                    "name": "Fairbanks Street"
+                },
+                "place-bndhl": {
+                    "loc": [
+                        42.340023,
+                        -71.129082
+                    ],
+                    "pixelLoc": 14,
+                    "name": "Brandon Hall"
+                },
+                "place-sumav": {
+                    "loc": [
+                        42.34111,
+                        -71.12561
+                    ],
+                    "pixelLoc": 16,
+                    "name": "Summit Avenue"
+                },
+                "place-cool": {
+                    "loc": [
+                        42.342116,
+                        -71.121263
+                    ],
+                    "pixelLoc": 19,
+                    "name": "Coolidge Corner"
+                },
+                "place-stpul": {
+                    "loc": [
+                        42.343327,
+                        -71.116997
+                    ],
+                    "pixelLoc": 22,
+                    "name": "Saint Paul Street"
+                },
+                "place-kntst": {
+                    "loc": [
+                        42.344074,
+                        -71.114197
+                    ],
+                    "pixelLoc": 24,
+                    "name": "Kent Street"
+                },
+                "place-hwsst": {
+                    "loc": [
+                        42.344906,
+                        -71.111145
+                    ],
+                    "pixelLoc": 26,
+                    "name": "Hawes Street"
+                },
+                "place-smary": {
+                    "loc": [
+                        42.345974,
+                        -71.107353
+                    ],
+                    "pixelLoc": 29,
+                    "name": "Saint Mary's Street"
+                },
+                "place-kencl": {
+                    "loc": [
+                        42.348949,
+                        -71.095169
+                    ],
+                    "pixelLoc": 37,
+                    "name": "Kenmore"
+                },
+                "place-hymnl": {
+                    "loc": [
+                        42.347888,
+                        -71.087903
+                    ],
+                    "pixelLoc": 42,
+                    "name": "Hynes Convention Center"
+                },
+                "place-coecl": {
+                    "loc": [
+                        42.349974,
+                        -71.077447
+                    ],
+                    "pixelLoc": 49,
+                    "name": "Copley"
+                },
+                "place-armnl": {
+                    "loc": [
+                        42.351902,
+                        -71.070893
+                    ],
+                    "pixelLoc": 54,
+                    "name": "Arlington"
+                },
+                "place-boyls": {
+                    "loc": [
+                        42.35302,
+                        -71.06459
+                    ],
+                    "pixelLoc": 58,
+                    "name": "Boylston"
+                },
+                "place-pktrm": {
+                    "loc": [
+                        42.356395,
+                        -71.062424
+                    ],
+                    "pixelLoc": 61,
+                    "name": "Park Street"
+                },
+                "place-gover": {
+                    "loc": [
+                        42.359705,
+                        -71.059215
+                    ],
+                    "pixelLoc": 64,
+                    "name": "Government Center"
+                },
+                "place-haecl": {
+                    "loc": [
+                        42.363021,
+                        -71.05829
+                    ],
+                    "pixelLoc": 66,
+                    "name": "Haymarket"
+                },
+                "place-north": {
+                    "loc": [
+                        42.365577,
+                        -71.06129
+                    ],
+                    "pixelLoc": 68,
+                    "name": "North Station"
+                }
+            },
+            "trains": {
+                "G-10239": {
+                    "loc": [
+                        42.3362,
+                        -71.14896
+                    ],
+                    "direction": 1,
+                    "prev": "place-clmnl",
+                    "next": "place-engav",
+                    "timestamp": "21:12:08"
+                },
+                "G-10237": {
+                    "loc": [
+                        42.34904,
+                        -71.09528
+                    ],
+                    "direction": 0,
+                    "prev": "place-smary",
+                    "next": "place-kencl",
+                    "timestamp": "21:12:08"
+                },
+                "G-10181": {
+                    "loc": [
+                        42.35929,
+                        -71.05951
+                    ],
+                    "direction": 0,
+                    "prev": "place-pktrm",
+                    "next": "place-gover",
+                    "timestamp": "21:12:08"
+                },
+                "G-10118": {
+                    "loc": [
+                        42.34478,
+                        -71.11142
+                    ],
+                    "direction": 1,
+                    "prev": "place-kntst",
+                    "next": "place-hwsst",
+                    "timestamp": "21:12:08"
+                },
+                "G-10113": {
+                    "loc": [
+                        42.35301,
+                        -71.06454
+                    ],
+                    "direction": 1,
+                    "prev": "place-boyls",
+                    "next": "place-pktrm",
+                    "timestamp": "21:12:08"
+                },
+                "G-10107": {
+                    "loc": [
+                        42.3372,
+                        -71.14441
+                    ],
+                    "direction": 1,
+                    "prev": "place-engav",
+                    "next": "place-denrd",
+                    "timestamp": "21:12:08"
+                },
+                "G-10091": {
+                    "loc": [
+                        42.34811,
+                        -71.09211
+                    ],
+                    "direction": 0,
+                    "prev": "place-kencl",
+                    "next": "place-hymnl",
+                    "timestamp": "21:12:08"
+                },
+                "G-10083": {
+                    "loc": [
+                        42.36607,
+                        -71.061
+                    ],
+                    "direction": 0,
+                    "prev": "place-haecl",
+                    "next": "place-north",
+                    "timestamp": "21:12:08"
+                },
+                "G-10074": {
+                    "loc": [
+                        42.34556,
+                        -71.1088
+                    ],
+                    "direction": 0,
+                    "prev": "place-hwsst",
+                    "next": "place-smary",
+                    "timestamp": "21:12:08"
+                },
+                "G-10071": {
+                    "loc": [
+                        42.34341,
+                        -71.11665
+                    ],
+                    "direction": 0,
+                    "prev": "place-stpul",
+                    "next": "place-kntst",
+                    "timestamp": "21:12:08"
+                },
+                "G-10067": {
+                    "loc": [
+                        42.34595,
+                        -71.10749
+                    ],
+                    "direction": 0,
+                    "prev": "place-hwsst",
+                    "next": "place-smary",
+                    "timestamp": "21:12:08"
+                },
+                "G-10060": {
+                    "loc": [
+                        42.36284,
+                        -71.05811
+                    ],
+                    "direction": 0,
+                    "prev": "place-gover",
+                    "next": "place-haecl",
+                    "timestamp": "21:12:08"
+                },
+                "G-10006": {
+                    "loc": [
+                        42.33855,
+                        -71.13847
+                    ],
+                    "direction": 0,
+                    "prev": "place-tapst",
+                    "next": "place-bcnwa",
+                    "timestamp": "21:12:08"
+                }
+            }
+        },
+        "Green-D": {
+            "name": "Green-D",
+            "numPixels": "142",
+            "stops": {
+                "place-gover": {
+                    "loc": [
+                        42.359705,
+                        -71.059215
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Government Center"
+                },
+                "place-pktrm": {
+                    "loc": [
+                        42.356395,
+                        -71.062424
+                    ],
+                    "pixelLoc": 3,
+                    "name": "Park Street"
+                },
+                "place-boyls": {
+                    "loc": [
+                        42.35302,
+                        -71.06459
+                    ],
+                    "pixelLoc": 6,
+                    "name": "Boylston"
+                },
+                "place-armnl": {
+                    "loc": [
+                        42.351902,
+                        -71.070893
+                    ],
+                    "pixelLoc": 10,
+                    "name": "Arlington"
+                },
+                "place-coecl": {
+                    "loc": [
+                        42.349974,
+                        -71.077447
+                    ],
+                    "pixelLoc": 15,
+                    "name": "Copley"
+                },
+                "place-hymnl": {
+                    "loc": [
+                        42.347888,
+                        -71.087903
+                    ],
+                    "pixelLoc": 22,
+                    "name": "Hynes Convention Center"
+                },
+                "place-kencl": {
+                    "loc": [
+                        42.348949,
+                        -71.095169
+                    ],
+                    "pixelLoc": 27,
+                    "name": "Kenmore"
+                },
+                "place-fenwy": {
+                    "loc": [
+                        42.345403,
+                        -71.104213
+                    ],
+                    "pixelLoc": 33,
+                    "name": "Fenway"
+                },
+                "place-longw": {
+                    "loc": [
+                        42.341702,
+                        -71.109956
+                    ],
+                    "pixelLoc": 38,
+                    "name": "Longwood"
+                },
+                "place-bvmnl": {
+                    "loc": [
+                        42.332608,
+                        -71.116857
+                    ],
+                    "pixelLoc": 46,
+                    "name": "Brookline Village"
+                },
+                "place-brkhl": {
+                    "loc": [
+                        42.331316,
+                        -71.126683
+                    ],
+                    "pixelLoc": 53,
+                    "name": "Brookline Hills"
+                },
+                "place-bcnfd": {
+                    "loc": [
+                        42.335765,
+                        -71.140455
+                    ],
+                    "pixelLoc": 63,
+                    "name": "Beaconsfield"
+                },
+                "place-rsmnl": {
+                    "loc": [
+                        42.335088,
+                        -71.148758
+                    ],
+                    "pixelLoc": 69,
+                    "name": "Reservoir"
+                },
+                "place-chhil": {
+                    "loc": [
+                        42.326753,
+                        -71.164699
+                    ],
+                    "pixelLoc": 81,
+                    "name": "Chestnut Hill"
+                },
+                "place-newto": {
+                    "loc": [
+                        42.329443,
+                        -71.192414
+                    ],
+                    "pixelLoc": 100,
+                    "name": "Newton Centre"
+                },
+                "place-newtn": {
+                    "loc": [
+                        42.322381,
+                        -71.205509
+                    ],
+                    "pixelLoc": 110,
+                    "name": "Newton Highlands"
+                },
+                "place-eliot": {
+                    "loc": [
+                        42.319045,
+                        -71.216684
+                    ],
+                    "pixelLoc": 118,
+                    "name": "Eliot"
+                },
+                "place-waban": {
+                    "loc": [
+                        42.325845,
+                        -71.230609
+                    ],
+                    "pixelLoc": 128,
+                    "name": "Waban"
+                },
+                "place-woodl": {
+                    "loc": [
+                        42.332902,
+                        -71.243362
+                    ],
+                    "pixelLoc": 138,
+                    "name": "Woodland"
+                },
+                "place-river": {
+                    "loc": [
+                        42.337352,
+                        -71.252685
+                    ],
+                    "pixelLoc": 141,
+                    "name": "Riverside"
+                }
+            },
+            "trains": {
+                "G-10307": {
+                    "loc": [
+                        42.3268,
+                        -71.16464
+                    ],
+                    "direction": 0,
+                    "prev": "place-rsmnl",
+                    "next": "place-chhil",
+                    "timestamp": "21:12:09"
+                },
+                "G-10305": {
+                    "loc": [
+                        42.32892,
+                        -71.17805
+                    ],
+                    "direction": 0,
+                    "prev": "place-chhil",
+                    "next": "place-newto",
+                    "timestamp": "21:12:09"
+                },
+                "G-10303": {
+                    "loc": [
+                        42.34862,
+                        -71.0976
+                    ],
+                    "direction": 1,
+                    "prev": "place-kencl",
+                    "next": "place-fenwy",
+                    "timestamp": "21:12:09"
+                },
+                "G-10298": {
+                    "loc": [
+                        42.34897,
+                        -71.09328
+                    ],
+                    "direction": 0,
+                    "prev": "place-hymnl",
+                    "next": "place-kencl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10292": {
+                    "loc": [
+                        42.33131,
+                        -71.1241
+                    ],
+                    "direction": 1,
+                    "prev": "place-bvmnl",
+                    "next": "place-brkhl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10290": {
+                    "loc": [
+                        42.33001,
+                        -71.18405
+                    ],
+                    "direction": 1,
+                    "prev": "place-chhil",
+                    "next": "place-newto",
+                    "timestamp": "21:12:09"
+                },
+                "G-10281": {
+                    "loc": [
+                        42.35305,
+                        -71.06457
+                    ],
+                    "direction": 0,
+                    "prev": "place-pktrm",
+                    "next": "place-boyls",
+                    "timestamp": "21:12:09"
+                },
+                "G-10274": {
+                    "loc": [
+                        42.33723,
+                        -71.25208
+                    ],
+                    "direction": 0,
+                    "prev": "place-woodl",
+                    "next": "place-river",
+                    "timestamp": "21:12:09"
+                },
+                "G-10246": {
+                    "loc": [
+                        42.35164,
+                        -71.07172
+                    ],
+                    "direction": 0,
+                    "prev": "place-armnl",
+                    "next": "place-coecl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10174": {
+                    "loc": [
+                        42.33723,
+                        -71.25208
+                    ],
+                    "direction": 0,
+                    "prev": "place-woodl",
+                    "next": "place-river",
+                    "timestamp": "21:12:09"
+                }
+            }
+        },
+        "Green-E": {
+            "name": "Green-E",
+            "numPixels": "49",
+            "stops": {
+                "place-hsmnl": {
+                    "loc": [
+                        42.328316,
+                        -71.110252
+                    ],
+                    "pixelLoc": 0,
+                    "name": "Heath Street"
+                },
+                "place-bckhl": {
+                    "loc": [
+                        42.330139,
+                        -71.111313
+                    ],
+                    "pixelLoc": 1,
+                    "name": "Back of the Hill"
+                },
+                "place-rvrwy": {
+                    "loc": [
+                        42.331684,
+                        -71.111931
+                    ],
+                    "pixelLoc": 2,
+                    "name": "Riverway"
+                },
+                "place-mispk": {
+                    "loc": [
+                        42.333195,
+                        -71.109756
+                    ],
+                    "pixelLoc": 4,
+                    "name": "Mission Park"
+                },
+                "place-fenwd": {
+                    "loc": [
+                        42.333706,
+                        -71.105728
+                    ],
+                    "pixelLoc": 7,
+                    "name": "Fenwood Road"
+                },
+                "place-brmnl": {
+                    "loc": [
+                        42.334229,
+                        -71.104609
+                    ],
+                    "pixelLoc": 8,
+                    "name": "Brigham Circle"
+                },
+                "place-lngmd": {
+                    "loc": [
+                        42.33596,
+                        -71.100052
+                    ],
+                    "pixelLoc": 11,
+                    "name": "Longwood Medical Area"
+                },
+                "place-mfa": {
+                    "loc": [
+                        42.337711,
+                        -71.095512
+                    ],
+                    "pixelLoc": 14,
+                    "name": "Museum of Fine Arts"
+                },
+                "place-nuniv": {
+                    "loc": [
+                        42.340401,
+                        -71.088806
+                    ],
+                    "pixelLoc": 19,
+                    "name": "Northeastern University"
+                },
+                "place-symcl": {
+                    "loc": [
+                        42.342687,
+                        -71.085056
+                    ],
+                    "pixelLoc": 22,
+                    "name": "Symphony"
+                },
+                "place-prmnl": {
+                    "loc": [
+                        42.34557,
+                        -71.081696
+                    ],
+                    "pixelLoc": 25,
+                    "name": "Prudential"
+                },
+                "place-coecl": {
+                    "loc": [
+                        42.349974,
+                        -71.077447
+                    ],
+                    "pixelLoc": 29,
+                    "name": "Copley"
+                },
+                "place-armnl": {
+                    "loc": [
+                        42.351902,
+                        -71.070893
+                    ],
+                    "pixelLoc": 34,
+                    "name": "Arlington"
+                },
+                "place-boyls": {
+                    "loc": [
+                        42.35302,
+                        -71.06459
+                    ],
+                    "pixelLoc": 38,
+                    "name": "Boylston"
+                },
+                "place-pktrm": {
+                    "loc": [
+                        42.356395,
+                        -71.062424
+                    ],
+                    "pixelLoc": 41,
+                    "name": "Park Street"
+                },
+                "place-gover": {
+                    "loc": [
+                        42.359705,
+                        -71.059215
+                    ],
+                    "pixelLoc": 44,
+                    "name": "Government Center"
+                },
+                "place-haecl": {
+                    "loc": [
+                        42.363021,
+                        -71.05829
+                    ],
+                    "pixelLoc": 46,
+                    "name": "Haymarket"
+                },
+                "place-north": {
+                    "loc": [
+                        42.365577,
+                        -71.06129
+                    ],
+                    "pixelLoc": 48,
+                    "name": "North Station"
+                }
+            },
+            "trains": {
+                "G-10304": {
+                    "loc": [
+                        42.36543,
+                        -71.06039
+                    ],
+                    "direction": 1,
+                    "prev": "place-haecl",
+                    "next": "place-north",
+                    "timestamp": "21:12:09"
+                },
+                "G-10301": {
+                    "loc": [
+                        42.36574,
+                        -71.06466
+                    ],
+                    "direction": 1,
+                    "prev": "place-haecl",
+                    "next": "place-north",
+                    "timestamp": "21:12:09"
+                },
+                "G-10250": {
+                    "loc": [
+                        42.33478,
+                        -71.10324
+                    ],
+                    "direction": 1,
+                    "prev": "place-brmnl",
+                    "next": "place-lngmd",
+                    "timestamp": "21:12:09"
+                },
+                "G-10213": {
+                    "loc": [
+                        42.34996,
+                        -71.07792
+                    ],
+                    "direction": 0,
+                    "prev": "place-prmnl",
+                    "next": "place-coecl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10158": {
+                    "loc": [
+                        42.35989,
+                        -71.05897
+                    ],
+                    "direction": 0,
+                    "prev": "place-gover",
+                    "next": "place-haecl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10156": {
+                    "loc": [
+                        42.32825,
+                        -71.11032
+                    ],
+                    "direction": 1,
+                    "prev": "place-hsmnl",
+                    "next": "place-bckhl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10065": {
+                    "loc": [
+                        42.34997,
+                        -71.07748
+                    ],
+                    "direction": 1,
+                    "prev": "place-prmnl",
+                    "next": "place-coecl",
+                    "timestamp": "21:12:09"
+                },
+                "G-10046": {
+                    "loc": [
+                        42.33614,
+                        -71.09963
+                    ],
+                    "direction": 0,
+                    "prev": "place-lngmd",
+                    "next": "place-mfa",
+                    "timestamp": "21:12:09"
+                },
+                "G-10036": {
+                    "loc": [
+                        42.34115,
+                        -71.08692
+                    ],
+                    "direction": 1,
+                    "prev": "place-nuniv",
+                    "next": "place-symcl",
+                    "timestamp": "21:12:09"
+                }
+            }
+        }
+    }
+}

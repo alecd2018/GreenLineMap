@@ -1,7 +1,8 @@
 # server.py launches a Python based server for starting and stopping the led program
 
 from var import *
-from flask import Flask, make_response
+from flask import Flask, render_template, jsonify
+# from flask_cors import CORS
 from threading import Thread
 import logging
 app = Flask(__name__)
@@ -10,9 +11,6 @@ app = Flask(__name__)
 def run():
     print("Starting server at " + SERVER_IP+":"+str(PORT))
     app.run(host=SERVER_IP, port=PORT)
-
-
-toggle_cb = None
 
 
 def setupServer(t, g):
@@ -26,12 +24,17 @@ def setupServer(t, g):
     thread = Thread(target = run)
     thread.start()
 
+@app.route("/")
+def serveHTML():
+    return render_template("index.html")
+
 
 @app.route("/toggle/<state>")
 def toggle(state):
     return str(toggle_cb(state)).lower()
 
 
-@app.route("/data")
+@app.route("/data", methods=['GET'])
 def getData():
-    return getter()
+    data = getter()
+    return jsonify(data)

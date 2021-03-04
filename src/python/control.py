@@ -14,7 +14,6 @@ class Controller(object):
         self.isPaused = False
 
     def getData(self):
-        print(self.map.jsonify())
         return self.map.jsonify()
 
     def tick(self):

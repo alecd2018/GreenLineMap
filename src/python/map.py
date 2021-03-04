@@ -25,11 +25,10 @@ class Lines(object):
 
     def jsonify(self):
         print('hi')
-        data = {}
+        data = {'data':{}}
         for line in self.lines:
-            data[line.name] = line.jsonify()
+            data['data'][line.name] = line.jsonify()
 
-        print(data)
         return json.dumps(data)
 
 class Line(object):
@@ -89,7 +88,6 @@ class Line(object):
                 'next' : train.next.id,
                 'timestamp' : train.timestamp.strftime("%H:%M:%S")
             }
-        print(data)
         return data
 
 
