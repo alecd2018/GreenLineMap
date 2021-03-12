@@ -5,9 +5,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/alecdean/green-line-map">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Green Line Map</h3>
 
@@ -15,7 +12,6 @@
     A RaspberryPi project that displays a live visualization of trains on Boston's MBTA Green Line.
     <br />
     <br />
-    <a href="https://github.com/alecdean/green-line-map">View Demo</a>
   </p>
 </p>
 
@@ -34,8 +30,8 @@
 ## About The Project
 
 
-This project uses a RaspberryPi computer to pull live train data from the MBTA's API, and display it on a set of LED lights. Currently, the project is configured to display *only* the Green Line C route. See the video above for its various modes. Using a button, a user can alternate between the following modes:
-* Trains (default): displays live train locations on the Green Line.
+This project uses a RaspberryPi computer to pull live train data from the MBTA's API, and display it on a set of LED lights. Using a button, a user can alternate between the following modes:
+* Trains (default): displays live train locations on the each of Boston's T Lines.
 * Party: Showcases the usage of the WS2812B lights by playing with the colors
 * Off: Pauses the program until another button press
 
@@ -86,7 +82,7 @@ Copy and paste the following script into your terminal to run the installation.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To run a local copy *with no LED lights*, run the following:
+To run a local copy *with LED lights*, run the following:
 
 ```
 conda activate mbta
