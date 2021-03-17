@@ -1,7 +1,4 @@
 
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -11,6 +8,7 @@
   <p align="center">
     A RaspberryPi project that displays a live visualization of trains on Boston's MBTA Green Line.
     <br />
+    <img src="display.jpg">
     <br />
   </p>
 </p>
@@ -25,29 +23,28 @@
 - [Usage](#usage)
 - [Acknowledgements](#acknowledgements)
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-
 This project uses a RaspberryPi computer to pull live train data from the MBTA's API, and display it on a set of LED lights. Using a button, a user can alternate between the following modes:
-* Trains (default): displays live train locations on the each of Boston's T Lines.
-* Party: Showcases the usage of the WS2812B lights by playing with the colors
-* Off: Pauses the program until another button press
+
+- Trains (default): displays live train locations on the each of Boston's T Lines.
+- Party: Showcases the usage of the WS2812B lights by playing with the colors
+- Off: Pauses the program until another button press
 
 Follow the steps below for cloning and running a local copy.
 
 ### Built With
 
 #### Hardware
-* [RaspberryPi 4B]()
-* [WS2812B individually addressable LED strip]()
-* Custom wood frame
+
+- [RaspberryPi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
+- [WS2812B individually addressable LED strip](https://www.amazon.com/ALITOVE-Individually-Addressable-Flexible-Waterproof/dp/B018X04ES2)
+- Custom wood frame
 
 #### Software
-* [Anaconda Python](https://docs.conda.io/en/latest/miniconda.html)
 
-
+- [Anaconda Python](https://docs.conda.io/en/latest/miniconda.html)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -59,12 +56,13 @@ The following instructions were tested and executed on Ubuntu Linux, and they ma
 ### Prerequisites
 
 This project requires the following software:
-- [Anaconda](https://www.anaconda.com/): I used [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
+- [Anaconda](https://www.anaconda.com/): I used [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 ### Installation
 
 Copy and paste the following script into your terminal to run the installation.
+
   ```sh
   # Clone the repo
   git clone https://github.com/alecdean/green-line-map.git
