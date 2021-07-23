@@ -25,6 +25,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The purpose of this project is to be a quick morning aid to figure out what time exactly to leave the apartment, without needing to pull it up on your phone or look outside.
 
 This project uses a RaspberryPi computer to pull live train data from the MBTA's API, and display it on a set of LED lights. Using a button, a user can alternate between the following modes:
 
