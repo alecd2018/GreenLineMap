@@ -78,6 +78,27 @@ class LEDControl(object):
             self.strip.show()
             time.sleep(wait_ms/1000.0)
 
+    # For Halloween - spooky lighting
+    def fadeRedInAndOut(self, wait_ms=3):
+        """Fade a color in and out."""
+        for c in range(255):
+            newRed = Color(c, 0, 0)
+            for i in range(self.strip.numPixels()):
+                if self.interrupt:
+                    break
+                self.strip.setPixelColor(i, newRed)
+            self.strip.show()
+            time.sleep(wait_ms/1000.0)
+
+        for c in range(255):
+            newRed = Color(255 - c, 0, 0)
+            for i in range(self.strip.numPixels()):
+                if self.interrupt:
+                    break
+                self.strip.setPixelColor(i, newRed)
+            self.strip.show()
+            time.sleep(wait_ms/1000.0)
+
     def marker(self, i):
         if self.trains.get(i) and len(self.trains.get(i)):
             flags = [False, False]
