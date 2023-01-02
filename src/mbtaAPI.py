@@ -18,7 +18,7 @@ def getRequest(method, parameters=None):
 
 def getTrains():
     # Get trains going into Boston
-    data = getRequest("vehicles", {"filter[route]": ROUTE, "filter[direction_id]": 1})
+    data = getRequest("vehicles", {"filter[route]": ROUTE})
     return data
 
 

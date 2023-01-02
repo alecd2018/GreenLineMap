@@ -10,7 +10,7 @@ ROUTE = "Green-E"
 # curl -X GET "https://api-v3.mbta.com/routes/Green-E" -H "accept: application/vnd.api+json"
 
 # API_FILTER = "filter%5Broute%5D=Green-C&filter%5Bdirection_id%5D=1"
-API_FILTER = "filter%5Broute%5D=Green-C"
+API_FILTER = "filter%5Broute%5D=Green-E"
 
 TOTAL_NUM_PIXELS = 35
 
@@ -43,12 +43,12 @@ STOP_LIST = [
 ]
 
 ABBR_STOP_LIST = [
-    "place-north",
-    "place-spmnl",
-    "place-lech",
-    "place-esomr",
-    "place-gilmn",
-    "place-mgngl",
+    "place-mdftf",
     "place-balsq",
-    "place-mdftf"
+    "place-mgngl",
+    "place-gilmn",
+    "place-esomr",
+    "place-lech",
+    "place-spmnl",
+    "place-north"
 ]

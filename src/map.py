@@ -11,7 +11,7 @@ class Map(object):
     def __init__(self):
         self.stops = Stops()
         self.trains = {}
-        self.name = "Green - C"
+        self.name = "Green - E"
 
     def tick(self):
         self.trains = Trains()
@@ -37,7 +37,7 @@ class Map(object):
             return '-'
 
     def textMap(self):
-        return "GreenLine - C" + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
+        return "GreenLine - E" + ' ' + ''.join(map(self.marker, range(TOTAL_NUM_PIXELS)))
 
 
 class Stop(object):

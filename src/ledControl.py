@@ -111,7 +111,7 @@ class LEDControl(object):
             # Train at stop = YELLOW
             # Moving train = GREEN
             elif flags[0]:
-                return YELLOW if self.stops.get(i) else GREEN
+                return YELLOW if self.stops.get(i) else BLUE
             else:
                 return YELLOW if self.stops.get(i) else GREEN
         if self.stops.get(i):
