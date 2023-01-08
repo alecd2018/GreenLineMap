@@ -191,11 +191,11 @@ class Trains(object):
         abbrTrains = {}
         for train in self.trains:
             t = self.trains[train]
-            if t.next.id in ABBR_STOP_LIST[1:]:
+            if t.next.id in ABBR_STOP_LIST[:-1]:
                 t.next = stops[t.next.id]
                 t.prev = stops[t.prev.id]
                 abbrTrains[train] = t
-            elif t.prev.id in ABBR_STOP_LIST[:-1]:
+            elif t.prev.id in ABBR_STOP_LIST[1:]:
                 t.next = stops[t.next.id]
                 t.prev = stops[t.prev.id]
                 abbrTrains[train] = t

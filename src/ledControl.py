@@ -16,10 +16,12 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 #Colors:
 WHITE = Color(50, 50, 50)
 GREEN = Color(0, 50, 0)
-BLUE = Color(0, 0, 50)
+BLUE = Color(0, 50, 50)
 RED = Color(50, 0, 0)
 PURPLE = Color(40, 0, 40)
-YELLOW = Color(50, 50, 0)
+YELLOW = Color(25, 25, 0)
+BRIGHT_GREEN = Color(0, 100, 0)
+BRIGHT_BLUE = Color(0, 100, 100)
 OFF = Color(0, 0, 0)
 
 
@@ -107,13 +109,13 @@ class LEDControl(object):
             # Two trains in same stop = RED
             # Two trains in same spot = BLUE
             if flags[0] and flags[1]:
-                return RED if self.stops.get(i) else BLUE
+                return YELLOW if self.stops.get(i) else BLUE
             # Train at stop = YELLOW
             # Moving train = GREEN
             elif flags[0]:
-                return YELLOW if self.stops.get(i) else BLUE
+                return BRIGHT_GREEN if self.stops.get(i) else GREEN
             else:
-                return YELLOW if self.stops.get(i) else GREEN
+                return BRIGHT_BLUE if self.stops.get(i) else BLUE
         if self.stops.get(i):
             return WHITE
         else:
